@@ -5,15 +5,21 @@
   
 
   
-  <title>Quantity Accumulation and Quality Leap</title>
+  <title>最全面的SpringBoot配置文件详解 | Quantity Accumulation and Quality Leap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Quantity Accumulation and Quality Leap">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Spring Boot在工作中是用到的越来越广泛了，简单方便，有了它，效率提高不知道多少倍。Spring Boot配置文件对Spring Boot来说就是入门和基础，经常会用到，所以写下做个总结以便日后查看。 1、配置文件 当我们构建完Spring Boot项目后，会在resources目录下给我们一个默认的全局配置文件 application.properties，这是一个空文件，因为Sprin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最全面的SpringBoot配置文件详解">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/最全面的SpringBoot配置文件详解/index.html">
 <meta property="og:site_name" content="Quantity Accumulation and Quality Leap">
+<meta property="og:description" content="Spring Boot在工作中是用到的越来越广泛了，简单方便，有了它，效率提高不知道多少倍。Spring Boot配置文件对Spring Boot来说就是入门和基础，经常会用到，所以写下做个总结以便日后查看。 1、配置文件 当我们构建完Spring Boot项目后，会在resources目录下给我们一个默认的全局配置文件 application.properties，这是一个空文件，因为Sprin">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/wUxSaSX.png">
+<meta property="og:updated_time" content="2018-12-08T15:14:39.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Quantity Accumulation and Quality Leap">
+<meta name="twitter:title" content="最全面的SpringBoot配置文件详解">
+<meta name="twitter:description" content="Spring Boot在工作中是用到的越来越广泛了，简单方便，有了它，效率提高不知道多少倍。Spring Boot配置文件对Spring Boot来说就是入门和基础，经常会用到，所以写下做个总结以便日后查看。 1、配置文件 当我们构建完Spring Boot项目后，会在resources目录下给我们一个默认的全局配置文件 application.properties，这是一个空文件，因为Sprin">
+<meta name="twitter:image" content="https://i.imgur.com/wUxSaSX.png">
   
     <link rel="alternate" href="/atom.xml" title="Quantity Accumulation and Quality Leap" type="application/atom+xml">
   
@@ -60,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-最全面的SpringBoot配置文件详解" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-最全面的SpringBoot配置文件详解" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/08/最全面的SpringBoot配置文件详解/" class="article-date">
   <time datetime="2018-12-08T13:55:24.000Z" itemprop="datePublished">2018-12-08</time>
@@ -75,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/08/最全面的SpringBoot配置文件详解/">最全面的SpringBoot配置文件详解</a>
+    <h1 class="article-title" itemprop="name">
+      最全面的SpringBoot配置文件详解
     </h1>
   
 
@@ -393,164 +397,19 @@ public CharacterEncodingFilter characterEncodingFilter() {
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-java基础" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/15/java基础/" class="article-date">
-  <time datetime="2018-11-15T15:34:36.000Z" itemprop="datePublished">2018-11-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/15/java基础/">java基础</a>
-    </h1>
+    <a href="/2018/11/15/java基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java基础</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一.java中的数据类型</p>
-<p> 1.基本数据类型:四类 八种</p>
-<pre><code>byte(1) boolean(1) short(2) char(2) int(4) float(4) long(8) double(8)
-</code></pre><p> 2.引用数据类型</p>
-<pre><code>String , 数组,集合ArrayList,Scanner,Random,自定义类型
-</code></pre><p> 二.引用数据类型String中的方法(4532)</p>
-<p> 第一组:判断方法</p>
-<pre><code>boolean equals(String str);//比较两个字符串的内容是否相等
-boolean equalsIgnoreCase(String str);//比较两个字符串的内容是相等(忽略大小写)
-boolean startsWith(String subStr);//判断某个字符串是否以指定的子串开头
-boolean endsWith(String subStr);//判断某个字符串是否以指定的子串结尾
-</code></pre><p> 第二组:获取方法</p>
-<pre><code>int length();//获取字符串中字符个数
-char charAt(int index);//获取字符串中某一个字符
-String substring(int startIndex);//从指定下标开始截取字符串,直到字符串的末尾
-String substring(int startIndex,int endIndex);//从指定下标开始截取字符串,到指定下标结束(包括开头不包括结尾)
----可忽略  int indexof(String subStr);//获取子串第一次出现的下标
-</code></pre><p> 第三组:转换方法</p>
-<pre><code>String toLowerCase();//转成小写串
-String toUpperCase();//转成大写串
-Char[] toCharArray();//变成字符数组
-</code></pre><p> 第四组:其他方法</p>
-<pre><code>String trim();//去掉字符串两端的空格
-String[] split(String str);//切割字符串
-</code></pre><p> 三:流_读写文件</p>
-<pre><code>    输出流:数据从java程序 到  文件中
-    FileWriter:文件的字符输出流,写数据(一个字符,一个字符串,一个字符数组)
-        write(int ch);//写一个字符(可以写字符的ASCII码值)
-        write(char[] chs);//写一个字符数组
-        write(String s);//写一个字符串
-        write(char[] chs,int startIndex,int len);//写一个字符数组的一部分
-        write(String s,int startInex,int len);//写一个字符串的一部分
-
-    输入流:数据从 文件 到java程序
-    FileReader:文件的字符输入流,读数据(一个字符,一个字符数组)
-        int read();//读取一个字符
-        int read(char[] chs);//一个读取一个字符数组,返回值表示实际读取到的字符的个数
-
-    文件的路径分为两种:
-    1.相对路径:
-        相对于当前项目而言的
-
-    2.绝对路径:
-        以盘符开头  C: D:
-四:对象的内存图:
-    Dog d = new Dog();
-    d是引用数据类型,保存到栈(stack)中
-    new Dog();创建对象,保存到堆(heap)中
-</code></pre><p>  五:this的作用以及本质</p>
-<pre><code>作用:区分局部变量和成员变量的同名的情况
-本质:this代表一个对象,具体是哪一个对象,那么由方法的调用者决定
-</code></pre><p>  六:匿名对象:</p>
-<pre><code>语法: 只创建对象,而不是变量来接收
-    比如: new Dog(); new Student()
-特点:一个匿名对象 只能使用一次,第二次使用就是一个新的匿名对象
-</code></pre><p>  ***继承</p>
-<pre><code>1.概念:
-    描述两个类之间的关系(子类和父类之间的关系)
-    一个类(子类) 在另外一个类(父类)的基础上创建,那么这个过程就叫做继承
-2.语法:
-    public class 父类{}
-    public class 子类 extends 父类{}
-3.继承的作用:
-    子类自动拥有父类的可继承(非private修饰的)的成员变量和成员方法
-    提高了代码的服用性
-4.继承中子父类的成员变量和成员方法的特点:
-    如果子父类中出现了同名的成员变量或者成员方法
-        通过子类对象调用成员变量或者成员方法时,优先调用子类自己的,如果子类没有,再去访问父类的
-5.java中继承的特点:
-    1.java只支持单继承: 一个子类 只能有一个直接父类
-    2.java中支持多层继承
-    3.子类自动拥有父类的可继承(非private修饰的)的成员变量和成员方法
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/java基础/" data-id="cjpfm278q000184ote5mp9ton" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/15/hello-world/" class="article-date">
-  <time datetime="2018-11-15T14:41:59.501Z" itemprop="datePublished">2018-11-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/hello-world/" data-id="cjpfm2786000084ot8g016zct" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
