@@ -62,6 +62,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sql表连接的几种方式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/09/sql表连接的几种方式/" class="article-date">
+  <time datetime="2018-12-09T12:41:45.000Z" itemprop="datePublished">2018-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/09/sql表连接的几种方式/">sql表连接的几种方式 </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一.SQL 左外连接，右外连接，全连接，内连接</p>
+<p>表结构</p>
+<p>a表 id name b表 id job parent_id </p>
+<pre><code>1  张三      1 23   1 
+2  李四      2 34   2 
+3  王武      3 34   4
+</code></pre><p>a.id同parent_id 存在关系</p>
+<p>内连接</p>
+<p>inner join与join的结果是一样的</p>
+<p>select a.,b. from a inner join b on a.id=b.parent_id</p>
+<p>结果是</p>
+<p>1 张3 1 23 1 </p>
+<p>2 李四 2 34 2</p>
+<p>左连接</p>
+<p>select a.,b. from a left join b on a.id=b.parent_id</p>
+<p>结果是</p>
+<p>1 张3 1 23 1 </p>
+<p>2 李四 2 34 2 </p>
+<p>3 王武 null</p>
+<p>右连接</p>
+<p>select a.,b. from a right join b on a.id=b.parent_id</p>
+<p>结果是</p>
+<p>1 张3 1 23 1</p>
+<p>2 李四 2 34 2</p>
+<p>null 3 34 4</p>
+<p>完全连接</p>
+<p>select a.,b. from a full join b on a.id=b.parent_id</p>
+<p>结果是</p>
+<p>1 张3 1 23 1</p>
+<p>2 李四 2 34 2</p>
+<p>null 3 34 4</p>
+<p>3 王武 null</p>
+<p>注意：join 默认结果等于inner join</p>
+<p>二、自然连接</p>
+<p>natural join：自然连接（不允许带on/using）</p>
+<p>natrual join：全自然连接，对左右2个表相同名字的列进行等值匹配，不可用on，using操作指定，自动删除多余重名列,自动合并不同的列</p>
+<p>natrual left join：左自然连接，保留2个表的列（删除多余重名列），以左表为准，不存在匹配的右表列，值置为NULL</p>
+<p>natrual right join：和左自然连接相反</p>
+<pre><code>select * from tb_test1 natural join tb_student; 
++—-+——–+——–+——-+————+ 
+| id | name | gender | score | birthday | 
++—-+——–+——–+——-+————+ 
+| 1 | 李毅 | 男 | 95.30 | 1988-03-20 | 
++—-+——–+——–+——-+————+
+
+select * from tb_test1 natural left join tb_student; 
++—-+———–+——–+——-+————+ 
+| id | name | gender | score | birthday | 
++—-+———–+——–+——-+————+ 
+| 1 | 李毅 | 男 | 95.30 | 1988-03-20 | 
+| 2 | 二丫 | 女 | 95.30 | NULL | 
+| 3 | 张三 | 女 | 95.30 | NULL | 
+| 4 | 李四 | 女 | 95.30 | NULL | 
+| 7 | 胡鲁瓦 | 男 | 95.30 | NULL | 
+| 9 | 后羿 | 男 | 95.30 | NULL | 
++—-+———–+——–+——-+————+
+
+select * from tb_test1 natural right join tb_student; 
++—-+——–+——–+————+——-+ 
+| id | name | gender | birthday | score | 
++—-+——–+——–+————+——-+ 
+| 1 | 李毅 | 男 | 1988-03-20 | 95.30 | 
+| 2 | kevin | 男 | 1987-08-23 | NULL | 
+| 3 | marry | 女 | 1989-11-25 | NULL | 
+| 4 | lucy | 女 | 1989-11-25 | NULL | 
+| 5 | lily | 女 | 1992-01-25 | NULL | 
++—-+——–+——–+————+——-+
+</code></pre><p>笛卡尔乘积<br>已上连接都是基于cross join(笛卡尔乘积)，即两表行数的乘积</p>
+<p>概念:没有where条件的交叉连接将产生连接表所涉及的笛卡尔积。即TableA的行数TableB的行数的结果集。（TableA 3行TableB 3行=9行）</p>
+<p>sql语句:</p>
+<p>select * from TableA cross join TableB</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/09/sql表连接的几种方式/" data-id="cjpgw970u0000usot4f0u4ya6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-最全面的SpringBoot配置文件详解" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/08/最全面的SpringBoot配置文件详解/" class="article-date">
@@ -387,7 +494,7 @@ public CharacterEncodingFilter characterEncodingFilter() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/最全面的SpringBoot配置文件详解/" data-id="cjpfm2795000284otg7ioub5f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/最全面的SpringBoot配置文件详解/" data-id="cjpgw97220003usotlosp6iql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,7 +602,7 @@ String[] split(String str);//切割字符串
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/java基础/" data-id="cjpfm278q000184ote5mp9ton" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/java基础/" data-id="cjpgw971r0002usot5n52lzfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +647,7 @@ String[] split(String str);//切割字符串
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/15/hello-world/" data-id="cjpfm2786000084ot8g016zct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/15/hello-world/" data-id="cjpgw971d0001usotv263wkv0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,6 +686,10 @@ String[] split(String str);//切割字符串
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/09/sql表连接的几种方式/">sql表连接的几种方式 </a>
+          </li>
         
           <li>
             <a href="/2018/12/08/最全面的SpringBoot配置文件详解/">最全面的SpringBoot配置文件详解</a>
