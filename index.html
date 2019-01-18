@@ -62,6 +62,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-数据库篇一" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/19/数据库篇一/" class="article-date">
+  <time datetime="2019-01-18T16:53:54.000Z" itemprop="datePublished">2019-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/19/数据库篇一/">数据库篇一</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251) none repeat scroll 0% 0%; overflow: auto; overflow-wrap: normal; word-break: normal;"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px;">微信公众号：<strong style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; font-weight: bold;"><a href="#jump_10" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">菜鸟永恒</a></strong></p><br></blockquote><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第1章    数据库介绍</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.1     数据库概述<br>    什么是数据库(DB:DataBase)<br>数据库就是存储数据的仓库，其本质是一个文件系统，数据按照特定的格式将数据存储起来，用户可以对数据库中的数据进行增加，修改，删除及查询操作。<br>    什么是数据库管理系统<br>数据库管理系统（DataBase Management System，DBMS）：指一种操作和管理数据库的 大型软件，用于建立、使用和维护数据库，对数据库进行统一管理和控制，以保证数据库的安全性和完整性。用户通过数据库管理系统访问数据库中表内的数据。<br>    数据库与数据库管理系统的关系<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FqbvtbWIizukWRnHQxor5j3M68Rd" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.2    数据库表</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">数据库中以表为组织单位存储数据。表中有行和列,我们叫做字段和记录<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhbBkHbyiZ9YJfwwJHyPsf7qIPT8" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3    表数据</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">表类似我们的Java类，每个字段都有对应的数据类型。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">那么用我们熟悉的java程序来与关系型数据对比，就会发现以下对应关系。<br>类———-表<br>类中属性———-表中字段<br>对象———-记录</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">根据表字段所规定的数据类型，我们可以向其中填入一条条的数据，而表中的每条数据类似类的实例对象。表中的一行一行的信息我们称之为记录。<br>    表记录与java类对象的对应关系<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FiMOb4XMu58MVzU0gVmzb6n4SO1v" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4    常见数据库</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    常见的数据库管理系统<br>MYSQL    ：开源免费的数据库，小型的数据库.已经被Oracle收购了.MySQL6.x版本也开始收费。<br>Oracle    ：收费的大型数据库，Oracle公司的产品。Oracle收购SUN公司，收购MYSQL。<br>DB2        ：IBM公司的数据库产品,收费的。常应用在银行系统中.<br>SQLServer：MicroSoft 公司收费的中型的数据库。C#、.net等语言常使用。<br>SyBase    ：已经淡出历史舞台。提供了一个非常专业数据建模的工具PowerDesigner。<br>SQLite    : 嵌入式的小型数据库，应用在手机端。<br>常用数据库：MYSQL Oracle <br>这里使用MySQL数据库。MySQL中可以有多个数据库，数据库是真正存储数据的地方。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第2章    MySql数据库</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2.1    MySql安装<br>    安装<br>参考MySQL安装图解.doc<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FtmJyZC-ssXhH1nw3cVRG5qltjcx" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>安装后，MySQL会以windows服务的方式为我们提供数据存储功能。开启和关闭服务的操作：右键点击我的电脑→管理→服务→可以找到MySQL服务开启或停止。<br> <figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FtSB5iZzQKXZKQueanNqqgQ0-h5-" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">也可以在DOS窗口，通过命令完成MySQL服务的启动和停止（必须以管理运行cmd命令窗口）<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhE6RYwa9_TS0_WF020eQsXQ1zdm" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2.2    登录MySQL数据库</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">MySQL是一个需要账户名密码登录的数据库，登陆后使用，它提供了一个默认的root账号，使用安装时设置的密码即可登录。<br>格式1：cmd&gt;  mysql –u用户名–p密码<br>例如：mysql -uroot –proot<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fn0oAg6B6SPHdPEJ5hpIIQlftO5Q" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">格式2：cmd&gt;  mysql –host=ip地址 –user=用户名 –password=密码<br>例如：mysql –host=127.0.0.1 –user=root –password=root<br>    Mysql –h127.0.0.1 –uroot -proot<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FkOg4J86ZhE1c3qpT2VkElsw3q8Q" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2.3    SQLyog（MySQL图形化开发工具）</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    安装：<br>提供的SQLyog软件为免安装版，可直接使用<br>    使用：<br>输入用户名、密码，点击连接按钮，进行访问MySQL数据库进行操作<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fr7sfxL5PLyBlx_8ZKtO6CUh1mo3" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">在Query窗口中，输入SQL代码，选中要执行的SQL代码，按F8键运行，或按执行按钮运行。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FsB_ae0EbWcGWATOzu4cXcbHGvp_" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第3章    SQL语句</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.1    SQL概述</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.1.1    SQL语句介绍</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">数据库是不认识JAVA语言的，但是我们同样要与数据库交互，这时需要使用到数据库认识的语言SQL语句，它是数据库的代码。<br>结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范。不同的数据库生产厂商都支持SQL语句，但都有特有内容。<br>普通话：各数据库厂商都遵循的ISO标准。<br>方言：数据库特有的关键字,语法。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fn9MzFzgqBWZk7KAJjG0s9Oa8gYJ" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.1.2    SQL语句分类</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    SQL分类：<br>    数据定义语言：简称DDL(Data Definition Language)，用来定义数据库中的对象：数据库，表，列等。关键字：create，alter，drop, show等<br>    数据操作语言：简称DML(Data Manipulation Language)，用来对数据库中表的记录进行更新。关键字：insert，delete，update等<br>    数据控制语言：简称DCL(Data Control Language)，用来定义数据库的访问权限和安全级别，及创建用户。<br>    数据查询语言：简称DQL(Data Query Language)，用来查询数据库中表的记录。关键字：select，from，where等</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.1.3    SQL通用语法</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    SQL语句可以单行或多行书写，以分号结尾 <br>    可使用空格和缩进来增强语句的可读性<br>    MySQL数据库的SQL语句不区分大小写，关键字建议使用大写<br>    例如：SELECT <em> FROM user。<br>    同样可以使用/**/的方式完成注释 在Sqlyog中也可以是 #或者- -注释一行 <br>    MySQL中的我们常使用的数据类型如下<br> </em></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FqyGWjDNWdVmYGNSg7MzyQfR4uni" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>详细的数据类型如下(不建议详细阅读！)<br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FiGqr2BjewfPMrsorb8jBapdg3oh" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FrKi0Gyu4WzSCnezxaLrpk40d7i6" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2    DDL之数据库操作：database</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.1    创建数据库(增)<br>格式:<br>     create database 数据库名;<br>    <em> create database 数据库名 character set 字符集;<br>    例如：</em></p><br><h1 id="hutf8" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">创建数据库数据库中数据的编码采用的是安装数据库时指定的默认编码 utf8</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE DATABASE webdb_1; </p><br><h1 id="h" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">创建数据库并指定数据库中数据的编码</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE DATABASE webdb_2 CHARACTER SET utf8;<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FjcbCuxXoC87Fqp1G9nabYKXgTj6" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.2    查看数据库(查)<br>查看数据库MySQL服务器中的所有的数据库:<br>show databases;<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhbKNupCK0V0X1iq8W0-OmdMPe07" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">查看某个数据库的定义的信息:<br>show create database 数据库名;<br>例如：<br>Show create database webdb_1;<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FgtOnAKwTOmUJaoqBGAOEbbgLjnp" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.3    删除数据库(删)<br>drop database 数据库名称;<br>例如：<br>drop database webdb_2;<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FnrBU4FfFgxxbyfPcousQq_hSvp9" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.4    修改正在使用的数据库(切换数据库)<br>    查看正在使用的数据库:<br>select database();<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fv9EyAl4grhWL4X4jbowzE_koEBW" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    切换数据库:<br>use 数据库名;<br>例如：<br>use webdb_1;<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fr2m61_TxRQsnssu2WKT6ccHP_Vb" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3    DDL之表操作：table</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3.1    创建表</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    格式： <br>create table 表名(<br>字段名 类型(长度) [约束],<br>字段名 类型(长度) [约束],<br>   …<br>);<br>类型：<br>    varchar(n)  字符串<br>    int         整形<br>    double      浮点<br>    date        时间<br>    timestamp   时间戳<br>约束(后期讲解,现在先知道)：<br>    primary key 主键，被主键修饰字段中的数据，不能重复、不能为null。<br>例如：</p><br><h3 id="h-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">创建分类表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE TABLE category (<br>  cid INT primary key, #分类ID <br>  cname VARCHAR(100) #分类名称<br>);<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fjnz5ki4QGPrLym-5PfymYR4wado" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3.2    查看表</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    查看数据库中的所有表：<br>格式：show tables;<br>    查看表结构： <br>格式：desc 表名;<br>例如：desc sort;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3.3    删除表</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    格式：drop table 表名;<br>例如：drop table category;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3.4    修改表(只改名字)<br>    rename table 表名 to 新表名;<br>作用：修改表名<br>例如：</p><br><h1 id="h5categorycategory2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5, 为分类表category改名成 category2</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">RENAME TABLE category TO category2;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.4    DDL之表结构操作：列</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.4.1    对表的结构进行操作(主要是操作表中的列)：</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    alter table 表名 add 列名 类型(长度) [约束];  <br>作用：修改表–添加列. <br>例如：</p><br><h1 id="h1varchar20" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1，为分类表添加一个新的字段为分类描述 varchar(20)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">ALTER TABLE category ADD <code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248) none repeat scroll 0% 0%;">desc</code> VARCHAR(20);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    alter table 表名 drop 列名; <br>作用：修改表–删除列.<br>例如：</p><br><h1 id="h4snamename" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4, 删除分类表中snamename这列</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">ALTER TABLE category DROP description;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    alter table 表名 change 旧列名 新列名 类型(长度) 约束; <br>作用：修改表–修改列名.<br>例如：</p><br><h1 id="h3snamesnamevarchar30" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3, 为分类表的分类名称字段进行更换更换为 snamesname varchar(30)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">ALTER TABLE category CHANGE <code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248) none repeat scroll 0% 0%;">desc</code>description VARCHAR(30);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    alter table 表名 modify 列名 类型(长度) 约束;<br>作用：修改表–修改列的类型长度及约束.<br>例如：</p><br><h1 id="h2varchar50notnull" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2, 为分类表的描述字段进行修改，类型varchar(50) 添加约束 not null</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">ALTER TABLE category MODIFY <code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248) none repeat scroll 0% 0%;">desc</code> VARCHAR(50) NOT NULL;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    alter table 表名 character set 字符集;(一般不修改)<br>作用：修改表的字符集<br>例如：</p><br><h1 id="h6categorygbk" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">6, 为分类表 category 的编码表进行修改，修改成 gbk</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">ALTER TABLE category CHARACTER SET gbk;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    查看表结构中的列(查看表时已经学过)：<br>格式：desc 表名;<br>例如：desc sort;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5    DML数据操作语言</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">介绍两个约束 <br>1.primary key    主键,值唯一,并且不能为空<br>2.auto_increment 自动增长,数据可以由MySql自己维护</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5.1    插入表记录：insert(增)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    语法：<br>– 向表中插入某些字段<br>insert into 表 (字段1,字段2,字段3..) values  (值1,值2,值3..); <br>–向表中插入所有字段,字段的顺序为创建表时的顺序<br>insert into 表 values (值1,值2,值3..);<br>    注意：<br>    值与字段必须对应，个数相同，类型相同<br>    值的数据大小必须在字段的长度范围内<br>    除了数值类型外，其它的字段类型的值必须使用引号引起。（建议单引号）<br>    如果要插入空值，可以不写字段，或者插入 null。       </p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    例如：</p><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs sql" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cid,cname)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c001’</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘电器’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cid,cname)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘服饰’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cid,cname)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c003’</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘化妆品’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cid,cname)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c004’</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘书籍’</span>);<br><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cid)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">category</span>(cname)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘耗材’</span>);<br></code></pre><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5.2    更新表记录：update(改)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">用来修改指定条件的数据，将满足条件的记录指定列修改为指定值<br>    语法：<br>–更新所有记录的指定字段<br>update 表名 set 字段名=值,字段名=值,…;<br>–更新符号条件记录的指定字段<br>update 表名 set 字段名=值,字段名=值,… where 条件;<br>    注意：<br>    列名的类型与修改的值要一致.<br>    修改值得时候不能超过最大长度.<br>    除了数值类型外，其它的字段类型的值必须使用引号引起</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5.3    删除记录：delete(删)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    语法：<br>delete from 表名 [where 条件];<br>或者<br>truncate table 表名;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    面试题：<br>删除表中所有记录使用delete from 表名; 还是用truncate table 表名;ctrl+z<br>删除方式：delete 一条一条删除，不清空auto_increment记录数。<br>truncate 直接将表删除，重新建表，auto_increment将置为零，从新开始。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.6     DOS操作数据乱码解决</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">我们在dos命令行操作中文时，会报错<br>insert into category(cid,cname) values(‘c010’,’中文’);        <br>ERROR 1366 (HY000): Incorrect string value: ‘\xB7\xFE\xD7\xB0’ for column ‘cname’ at row 1<br>解决方案1：在cmd命令窗口中输入命令，此操作当前窗口有效，为临时方案。<br>    set names gbk;<br>解决方案2：安装目录下修改my.ini文件，重启服务所有地方生效。[不建议]<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FsyvUqRApHC59pACXtt1UA7RoVby" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">错误原因:因为mysql的客户端设置编码是utf8,而系统的cmd窗口编码是gbk<br>    1）查看MySQL内部设置的编码<br>show variables like ‘character%’; 查看所有mysql的编码<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FiGBDqZN95ytKYj7-SSWMdJOajLW" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2）修改client、connection、results的编码一致（GBK编码）<br>client connetion result 和客户端保持一致，都为GBK<br>    将客户端编码修改为gbk.</p><br><h1 id="h1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">方式1：单独设置</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">set character_set_client=gbk; <br>set character_set_connection=gbk;<br>set character_set_results=gbk; </p><br><h1 id="h2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">方式2：快捷设置</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">set names gbk;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.7    DQL数据查询语言</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.7.1    准备工作</p><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs sql" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;"><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#创建商品表：</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">create</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">table</span>&nbsp;product(<br>&nbsp;&nbsp;&nbsp;&nbsp;pid&nbsp;<span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">int</span>&nbsp;primary&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">key</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;pname&nbsp;<span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">varchar</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">20</span>),<br>&nbsp;&nbsp;&nbsp;&nbsp;price&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">double</span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;category_id&nbsp;<span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">varchar</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">32</span>)<br>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">1</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘联想’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">5000</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c001’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">2</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘海尔’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">3000</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c001’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">3</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘雷神’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">5000</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c001’</span>);<br><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">4</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘JACK&nbsp;JONES’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">5</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘真维斯’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">6</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘花花公子’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">440</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">7</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘劲霸’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">2000</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c002’</span>);<br><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">8</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘香奈儿’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c003’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">9</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘相宜本草’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c003’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">10</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘面霸’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">5</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c003’</span>);<br><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">11</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘好想你枣’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">56</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c004’</span>);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">12</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘香飘飘奶茶’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">1</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘c005’</span>);<br><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INSERT</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">INTO</span>&nbsp;product(pid,pname,price,category_id)&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">VALUES</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">13</span>,<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘果9’</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">1</span>,<span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">NULL</span>);<br></code></pre><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.7.2    语法：<br>select [distinct]  | 列名1,列名2 from 表 [where 条件]</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.7.3    简单查询</p><br><h1 id="h1selectfromproduct" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1.查询所有的商品.        select <em> from product;</em></span></h1><br><h1 id="h2selectpnamepricefromproduct" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2.查询商品名和商品价格.    select pname,price from product;</span></h1><br><h1 id="h3selectdistinctpricefromproduct" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3.去掉重复值.    select distinct price from product;</span></h1><br><h1 id="h410" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4.查询结果是表达式（运算查询）：将所有商品的价格+10元进行显示.</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">select pname,price+10 from product;</p><br><h1 id="h5asas" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5.别名查询.使用的关键字是as（as可以省略的）.</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">5.1表别名: select  from product as p;<br>   5.2列别名：select pname as pn from product;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.7.4    条件查询 <br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FnJcIgkAZBhjR4ZDq_vMHVDzDFoZ" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs sql" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;"><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询商品名称为“花花公子”的商品所有信息：</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;pname&nbsp;=&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘花花公子’</span><br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询价格为800商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span><br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询价格不是800的所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;!=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;&lt;&gt;&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">NOT</span>(price&nbsp;=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span>)<br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询商品价格大于60元的所有商品信息</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;&gt;&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">60</span>;<br><br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询商品价格在200到1000之间所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;&gt;=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">AND</span>&nbsp;price&nbsp;&lt;=<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">1000</span>;<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">BETWEEN</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">AND</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">1000</span>;<br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询商品价格是200或800的所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">OR</span>&nbsp;price&nbsp;=&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span>;<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;price&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">IN</span>&nbsp;(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">200</span>,<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">800</span>);<br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询含有’霸’字的所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;pname&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">LIKE</span>&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘%霸%’</span>;<br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询以’香’开头的所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;pname&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">LIKE</span>&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘香%’</span>;<br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询第二个字为’想’的所有商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;<em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;pname&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">LIKE</span>&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important;">‘_想%’</span>;<br><br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询没有分类的商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;</em>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;category_id&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">IS</span>&nbsp;<span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">NULL</span><br><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询有分类的商品</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">SELECT</span>&nbsp;*&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">FROM</span>&nbsp;product&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">WHERE</span>&nbsp;category_id&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">IS</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">NOT</span>&nbsp;<span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">NULL</span><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important;">#查询所有价格大于2000的电脑商品(catetory_id是c001)</span><br>或者价格大于<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">2000</span>的服装商品(catetory_id是c002)**<br></code></pre></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/19/数据库篇一/" data-id="cjr2ad23s000bckot7slaoeqq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-XML" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/17/XML/" class="article-date">
@@ -93,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/XML/" data-id="cjr0si9a7000fm4otem8ptb6b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/XML/" data-id="cjr2ad243000gckotfbumhipu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/网络编程/" data-id="cjr0si9a2000dm4otrzyd0jvw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/网络编程/" data-id="cjr2ad23y000eckotin2b0bio" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/14/转换流-打印流-序列化/" data-id="cjr0si9a5000em4ot69ij49vl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/14/转换流-打印流-序列化/" data-id="cjr2ad240000fckotyd01br96" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/13/IO【字节流、高效流】/" data-id="cjr0si99x000bm4otcfpew0xx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/13/IO【字节流、高效流】/" data-id="cjr2ad23u000cckot38ev7pyl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/12/IO【File、递归】/" data-id="cjr0si99m0008m4ot4ts99koa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/12/IO【File、递归】/" data-id="cjr2ad23j0008ckot8hqa93p7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/12/集合【Map、可变参数、Collections】/" data-id="cjr0si99z000cm4otxryuxgp9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/12/集合【Map、可变参数、Collections】/" data-id="cjr2ad23x000dckot5495zrzj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/集合【LinkedList、HashSet、Collection集合体系】/" data-id="cjr0si99o0009m4otnwmphk6f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/集合【LinkedList、HashSet、Collection集合体系】/" data-id="cjr2ad23m0009ckotmnc59kty" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/09/集合/" data-id="cjr0si99t000am4otf8qj4qxp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/09/集合/" data-id="cjr2ad23p000ackotyqnpa4ea" class="article-share-link">Share</a>
       
       
     </footer>
@@ -681,406 +718,7 @@ booleanflag = str.matches(regex);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/08/常用API/" data-id="cjr0si98y0005m4oti4s3moin" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-重写、this、super-抽象类" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/05/重写、this、super-抽象类/" class="article-date">
-  <time datetime="2019-01-05T12:54:21.000Z" itemprop="datePublished">2019-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/05/重写、this、super-抽象类/">重写、this、super,抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继承<br>1.1    继承中子类中出现与父类重名的成员变量</p>
-<p>当子父类中出现了同名成员变量时，在子类中若要访问父类中的成员变量，必须使用关键字super来完成。</p>
-<pre><code>在子类中，访问父类中的成员变量格式：
-
-super.父类中的成员变量
-</code></pre><p>看如下代码：<br>    class Fu<br>    {<br>    //Fu中的成员变量。<br>    int num = 5;<br>    }<br>    class Zi extends Fu<br>    {<br>    //Zi中的成员变量<br>    int num = 6;<br>    void show()<br>    {<br>        //子父类中出现了同名的成员变量时<br>        //在子类中需要访问父类中非私有成员变量时，需要使用super关键字<br>        //访问父类中的num<br>        System.out.println(“Fu num=”+super.num);<br>        //访问子类中的num2<br>        System.out.println(“Zi num2=”+this.num);<br>    }<br>    }<br>    class Demo5<br>    {<br>    public static void main(String[] args)<br>    {<br>        Zi z = new Zi(); //创建子类对象<br>        z.show(); //调用子类中的show方法<br>    }<br>    }</p>
-<p>1.2    继承后子类对象的内存图</p>
-<p>当子类创建对象后，该子类对象本身可以使用this来指代，而该对象当中的父类空间可以使用super来指代。</p>
-<p>如下为加入了子父类关系后的对象内存图。</p>
-<p>继承后对象内存图</p>
-<p><img src="https://i.imgur.com/qZ5yxjO.png" alt=""></p>
-<p>1.3    继承中方法重写&amp;应用</p>
-<p>    子父类成员方法特殊情况——覆盖</p>
-<p>子类中出现与父类一模一样的方法时，会出现覆盖操作，也称为override重写、复写或者覆盖。</p>
-<pre><code>class Fu
-{
-public void show()
-{
-    System.out.println(&quot;Fu show&quot;);
-}
-}
-class Zi extends Fu
-{
-//子类复写了父类的show方法
-public void show()
-{
-    System.out.println(&quot;Zi show&quot;);
-}
-}
-</code></pre><p>   方法重写（覆盖）的应用：<br>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法，这样，即沿袭了父类的功能，又定义了子类特有的内容。</p>
-<p>举例：比如手机，当描述一个手机时，它具有发短信，打电话，显示来电号码功能，后期由于手机需要在来电显示功能中增加显示姓名和头像，这时可以重新定义一个类描述智能手机，并继承原有描述手机的类。并在新定义的类中覆盖来电显示功能，在其中增加显示姓名和头像功能。</p>
-<p>在子类中，访问父类中的成员方法格式：<br>super.父类中的成员方法();</p>
-<p>看如下代码：</p>
-<pre><code>public class Test {
-public static void main(String[] args) {
-    new NewPhone().showNum();
-}
-}
-
-//手机类
-class Phone{
-public void sendMessage(){
-    System.out.println(&quot;发短信&quot;);
-}
-public void call(){
-    System.out.println(&quot;打电话&quot;);
-}
-public void showNum(){
-    System.out.println(&quot;来电显示号码&quot;);
-}
-}
-
-//智能手机类
-class NewPhone extends Phone{
-
-//覆盖父类的来电显示号码功能，并增加自己的显示姓名和图片功能
-public void showNum(){
-    //调用父类已经存在的功能使用super
-    super.showNum();
-    //增加自己特有显示姓名和图片功能
-    System.out.println(&quot;显示来电姓名&quot;);
-    System.out.println(&quot;显示头像&quot;);
-}
-}
-</code></pre><p>1.4    方法重写的注意事项</p>
-<p>重写需要注意的细节问题：</p>
-<p>    子类方法覆盖/重写/覆写(override)父类方法，必须要保证权限大于等于父类权限。</p>
-<pre><code>class Fu(){    
-void show(){}
-    public void method(){}
-}
-class Zi() extends Fu{
-public void show(){}  //编译运行没问题
-    void method(){}      //编译错误
-}
-</code></pre><p>    如果父类的方法是private的修饰的,那么在子类中没法重写(其他修饰符都可以重写)</p>
-<p>    写法上稍微注意:必须一模一样:方法的返回值类型 方法名 参数列表都要一样。</p>
-<p>总结：当一个类是另一个类中的一种时，可以通过继承，来继承属性与功能。如果父类具备的功能内容需要子类特殊定义时，进行方法重写。</p>
-<p>1.5    this与super调用普通成员与构造方法</p>
-<pre><code>调用普通成员：
-this.成员变量       可以访问本类对象的成员变量
-super.成员变量     可以访问父类对象的成员变量
-
-this.成员方法()     可以访问本类对象的成员方法
-super.成员方法()    可以访问父类对象的成员方法
-
-使用this找本类,如果子类没有找父类
-使用super找父类,如果父类没有不会去找子类
-
-调用构造方法：
-this(其他参数)      可以访问本类其他的构造方法
-super(其他参数)    可以访问父类其他的构造方法
-
-   默认子类调用父类构造方法
-子类的每个构造方法中均有默认的super(),调用父类的空参构造。手动调用父类构造会覆盖默认的super();
-</code></pre><p>1.6    [扩展1]使用this调用其他构造方法</p>
-<pre><code>public class Person {
-private int age;
-public Person(){
-    this(15);//这句话调用 下面带int参数构造
-}
-public Person(int age){
-    this.age = age;
-}
-public int getAge() {
-    return age;
-}
-public void setAge(int age) {
-    this.age = age;
-}
-}
-/*
- *  以前this.这种形式;
- *  现在:this() 语句形式
- *  调用本类中的其他构造方法
- *  注意:this()语句形式必须写在构造方法的第一行
- */
-public class Test {
-public static void main(String[] args) {
-    Person p = new Person();
-    int a = p.getAge();
-    System.out.println(a);
-
-/*    Person p1 = new Person(15);
-    a = p1.getAge();
-    System.out.println(a);*/
-}
-}
-</code></pre><p>需求1,创建一个人的对象,要求:无论通过何种构造方法创建,人对象的年龄就是10岁.</p>
-<p>1.7    [扩展2]使用super调用父类的构造方法</p>
-<p>一.子类的每个每个每个构造方法中均有默认的super(),调用父类的空参构造</p>
-<pre><code>public class Fu {
-
-    public Fu(){
-        System.out.println(&quot;父类的构造方法&quot;);
-    }
-}
-
-public class Zi extends Fu{
-int a;
-    public Zi(){
-        //super();
-        System.out.println(&quot;子类的构造方法&quot;);
-    }
-public Zi(int a){
-        this.a = a;
-        System.out.println(&quot;子类的构造方法&quot;);
-    }
-
-
-}
-public class Test {
-    public static void main(String[] args) {
-        new Zi();//匿名对象
-}
-}
-</code></pre><p>二.  super()调用的是父类无参的构造方法  但是能不能调用父类其他有参构造呢?</p>
-<pre><code>public class Fu {
-int a;
-    public Fu(){
-        System.out.println(&quot;父类的构造方法&quot;);
-    }
-public Fu(int a){
-        this.a = a;
-    }
-
-}
-
-public class Zi extends Fu{
-    public Zi(){
-           System.out.println(&quot;子类的构造方法&quot;);
-    }
-}
-public class Test {
-    public static void main(String[] args) {
-        new Zi();//匿名对象
-}
-}
-</code></pre><p>思考:<br>Java设计的时候为什么这么干????<br>原因[了解]:<br>      Java设计的时候坚持了一个原则,谁污染谁治理,谁的孩子谁负责<br>                                    谁的成员变量 谁初始化(类不能太累,单一职责原则)</p>
-<p>18.this与super</p>
-<p>18.1父类对象空间优于子类对象产生</p>
-<p>在每次创建子类对象时，我们均会先创建父类对象，再创建其子类对象本身。目的在于子类对象中包含了其对应的父类对象空间，便可以包含其父类对象的成员，如果父类成员非private修饰，则子类可以随意使用父类成员。</p>
-<p>代码体现在子类的构造方法调用时，一定先调用父类的构造方法。</p>
-<p>18.2继承关系图(this与super)</p>
-<p>当子类创建对象后，该子类对象本身可以使用this来指代，而该对象当中的父类对象空间可以使用super来指代。</p>
-<p>如下为加入了子父类关系后的对象内存图。</p>
-<pre><code>以Person类为例：
-
-//定义父类
-public class Person {
-    private String name;
-    private int age;
-
-    public Person(){}
-    public Person(String name,int age) {
-        this.name = name;
-        this.age = age;
-     }
-    //get/set方法
- }
-
-//定义子类
-public class Chinese extends Person{
-private String address;
-public Chinese(){}
-public Chinese(String name,int age,String address) {
-    super(name,age);
-    this.address = address;
-}
-//对address的get/set
-}
-
-
-//定义测试类,使用子类创建对象
-public class Test{
-Chinese c = new Chinese(“AngelaBaby”,18,”北京海淀区上地软件园”);
-}
-
-继承后对象内存图
-</code></pre><p><img src="https://i.imgur.com/0Omzpgw.png" alt=""></p>
-<p>第2章    抽象类</p>
-<p>2.1    抽象类-产生</p>
-<p>当编写一个类时，我们往往会为该类定义一些方法，这些方法是用来描述该类的功能具体实现方式，那么这些方法都有具体的方法体。</p>
-<p>但是有的时候，某个父类只是知道子类应该包含怎么样的方法，但是无法准确知道子类如何实现这些方法。</p>
-<p>比如一个图形类应该有一个求周长的方法，但是不同的图形求周长的算法不一样。那该怎么办呢？</p>
-<p>再比如:动物应该有吃饭的方法,猫,狗,猪…. 那么在他们的父类中 这个吃方法应该怎么定义?</p>
-<p>分析事物时，发现了共性内容，就出现向上抽取。会有这样一种特殊情况，就是方法功能声明相同，但方法功能主体不同。那么这时也可以抽取，但只抽取方法声明，不抽取方法主体。那么此方法就是一个抽象方法。</p>
-<pre><code>如：
-描述讲师的行为：工作。
-描述助教的行为：工作。
-描述班主任的行为：工作。
-讲师、助教、班主任之间有共性，可以进行向上抽取。抽取它们的所属共性类型：员工。由于讲师、助教、班主任都具有工作功能，但是他们具体工作内容却不一样。这时在描述员工时，发现了有些功能不能够具体描述，那么，这些不具体的功能，需要在类中标识出来，通过java中的关键字abstract(抽象)修饰。
-</code></pre><p>当定义了抽象函数的类也必须被abstract关键字修饰，被abstract关键字修饰的类是抽象类。</p>
-<p>2.2    抽象类&amp;抽象方法的定义</p>
-<p>抽象方法定义的格式：</p>
-<p>public abstract 返回值类型 方法名(参数);</p>
-<p>抽象类定义的格式：</p>
-<pre><code>abstract class 类名 {
-}
-</code></pre><p>看如下代码：</p>
-<pre><code>//员工
-abstractclass Employee{
-    public abstract void work();//抽象函数。需要abstract修饰，并分号;结束
-}
-
-//讲师
-class Teacher extends Employee {
-    publicvoid work() {
-        System.out.println(&quot;正在讲解Java&quot;);
-    }
-}
-
-//助教
-class Assistant extends Employee {
-    publicvoid work() {
-        System.out.println(&quot;正在辅导学生&quot;);
-    }
-}
-
-//班主任
-class Manager extends Employee {
-    publicvoid work() {
-        System.out.println(&quot;正在管理班级&quot;);
-    }
-}
-</code></pre><p>2.3    抽象类&amp;抽象方法的使用</p>
-<p>抽象类无法直接创建对象，只能被子类继承后，创建子类对象。</p>
-<p>子类需要继承抽象父类并完成最终的方法实现细节(即重写方法，完成方法体)。而此时，方法重写不再是加强父类方法功能，而是父类没有具体实现，子类完成了具体实现，我们将这种方法重写也叫做实现方法。</p>
-<p>抽象类是拥有构造方法的，其存在的意义在于对自身进行初始化，供其子类使用。</p>
-<p>2.4    抽象类常见疑惑</p>
-<p>    抽象类一定可以是个父类，因为抽象类时不断抽取共性需求而来的。</p>
-<p>    抽象类中是可以不定义抽象方法的，此时仅仅是不让该类创建对象，用于某些特殊的设计需要。</p>
-<p>    设计时由具体类抽取出抽象类，而开发阶段应该先定义抽象父类，再根据不同需求由父类定义子类。</p>
-<p>第3章    综合案例—员工类系列定义</p>
-<p>3.1    案例介绍</p>
-<p>某IT公司有多名员工，按照员工负责的工作不同，进行了部门的划分（研发部员工、维护部员工）。研发部根据所需研发的内容不同，又分为JavaEE工程师、Android工程师；维护部根据所需维护的内容不同，又分为网络维护工程师、硬件维护工程师.</p>
-<p>公司的每名员工都有他们自己的员工编号、姓名，并要做它们所负责的工作。</p>
-<pre><code>    工作内容
-    JavaEE工程师：员工号为xxx的 xxx员工，正在研发淘宝网站
-    Android工程师：员工号为xxx的 xxx员工，正在研发淘宝手机客户端软件
-    网络维护工程师：员工号为xxx的 xxx员工，正在检查网络是否畅通
-    硬件维护工程师：员工号为xxx的 xxx员工，正在修复打印机
-</code></pre><p>请根据描述，完成员工体系中所有类的定义，并指定类之间的继承关系。进行XX工程师类的对象创建，完成工作方法的调用。</p>
-<p>3.2    案例分析</p>
-<p>    根据上述部门的描述，得出如下的员工体系图</p>
-<p><img src="https://i.imgur.com/KiIbOwp.png" alt=""></p>
-<p>    根据员工信息的描述，确定每个员工都有员工编号、姓名、要进行工作。则，把这些共同的属性与功能抽取到父类中（员工类），关于工作的内    容由具体的工程师来进行指定。</p>
-<pre><code>    工作内容
-    JavaEE工程师：员工号为xxx的 xxx员工，正在研发淘宝网站
-    Android工程师：员工号为xxx的 xxx员工，正在研发淘宝手机客户端软件
-    网络维护工程师：员工号为xxx的 xxx员工，正在检查网络是否畅通
-    硬件维护工程师：员工号为xxx的 xxx员工，正在修复打印机
-</code></pre><p>    创建JavaEE工程师对象，完成工作方法的调用</p>
-<p>3.3    案例代码实现</p>
-<p>    根据员工体系图，完成类的定义</p>
-<p>定义员工类(抽象类)</p>
-<pre><code>publicabstractclass Employee {
-private String id;// 员工编号
-private String name; // 员工姓名
-
-public String getId() {
-    returnid;
-}
-publicvoid setId(String id) {
-    this.id = id;
-}
-public String getName() {
-    returnname;
-}
-publicvoid setName(String name) {
-    this.name = name;
-}
-
-//工作方法（抽象方法）
-publicabstractvoid work();
-}
-</code></pre><p>    定义研发部员工类Developer 继承 员工类Employee</p>
-<pre><code>publicabstractclass Developer extends Employee {
-}
-</code></pre><p>    定义维护部员工类Maintainer 继承 员工类Employee</p>
-<pre><code>publicabstractclass Maintainer extends Employee {
-}
-</code></pre><p>    定义JavaEE工程师 继承 研发部员工类，重写工作方法</p>
-<pre><code>publicclass JavaEE extends Developer {
-    @Override
-    publicvoid work() {
-        System.out.println(&quot;员工号为 &quot; + getId() + &quot; 的 &quot; + getName() + &quot; 员工，正在研发淘宝网站&quot;);
-    }
-}
-</code></pre><p>    定义Android工程师 继承 研发部员工类，重写工作方法</p>
-<pre><code>publicclass Android extends Developer {
-    @Override
-    publicvoid work() {
-        System.out.println(&quot;员工号为 &quot; + getId() + &quot; 的 &quot; + getName() + &quot; 员工，正在研发淘宝手机客户端软件&quot;);
-    }
-}
-</code></pre><p>    定义Network网络维护工程师 继承 维护部员工类，重写工作方法</p>
-<pre><code>publicclass Network extends Maintainer {
-@Override
-publicvoid work() {
-    System.out.println(&quot;员工号为 &quot; + getId() + &quot; 的 &quot; + getName() + &quot; 员工，正在检查网络是否畅通&quot;);
-}
-}
-</code></pre><p>    定义Hardware硬件维护工程师 继承 维护部员工类，重写工作方法</p>
-<pre><code>publicclass Hardware extends Maintainer {
-@Override
-publicvoid work() {
-    System.out.println(&quot;员工号为 &quot; + getId() + &quot; 的 &quot; + getName() + &quot; 员工，正在修复打印机&quot;);
-}
-}
-</code></pre><p>    在测试类中，创建JavaEE工程师对象，完成工作方法的调用</p>
-<pre><code>publicclass Test {
-publicstaticvoid main(String[] args) {
-    //创建JavaEE工程师员工对象
-    JavaEE ee = new JavaEE();
-    //设置该员工的编号
-    ee.setId(&quot;000015&quot;);
-    //设置该员工的姓名
-    ee.setName(&quot;小明&quot;);
-    //调用该员工的工作方法
-    ee.work();
-}
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/重写、this、super-抽象类/" data-id="cjr0si98a0004m4ot7o6ls307" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/08/常用API/" data-id="cjr2ad22n0006ckot43so6aje" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1126,6 +764,10 @@ publicstaticvoid main(String[] args) {
       <ul>
         
           <li>
+            <a href="/2019/01/19/数据库篇一/">数据库篇一</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/17/XML/">XML</a>
           </li>
         
@@ -1139,10 +781,6 @@ publicstaticvoid main(String[] args) {
         
           <li>
             <a href="/2019/01/13/IO【字节流、高效流】/">IO【字节流、高效流】</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/12/IO【File、递归】/">IO【File、递归】</a>
           </li>
         
       </ul>
