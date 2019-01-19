@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>数据库篇多表操作 | Quantity Accumulation and Quality Leap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="微信公众号：菜鸟永恒第1章    多表操作实际开发中，一个项目通常需要很多张表才能完成。例如：一个商城项目就需要分类表(category)、商品表(products)、订单表(orders)等多张表。且这些表的数据之间存在一定的关系，接下来我们将在单表的基础上，一起学习多表方面的知识。 1.1    表与表之间的关系有3类表关系：一对多（多对一）、多对多、一对一（了解）    一对多关系：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库篇多表操作">
+<meta property="og:url" content="http://yoursite.com/2019/01/20/数据库篇多表操作/index.html">
+<meta property="og:site_name" content="Quantity Accumulation and Quality Leap">
+<meta property="og:description" content="微信公众号：菜鸟永恒第1章    多表操作实际开发中，一个项目通常需要很多张表才能完成。例如：一个商城项目就需要分类表(category)、商品表(products)、订单表(orders)等多张表。且这些表的数据之间存在一定的关系，接下来我们将在单表的基础上，一起学习多表方面的知识。 1.1    表与表之间的关系有3类表关系：一对多（多对一）、多对多、一对一（了解）    一对多关系：">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/FgDK7YvGgNQaLgguhcxHw_BPEvaH">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/Fs_UqnLm5gMUp4-aD-UpO5aDOLtX">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/Flcn04VogD8Y4MmKZMyTjYSmFOwh">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/FpugUNhCOPBacvVJ2Cc8c4L7x1WH">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/FnzAvKIRII4ig9OShYhfw3wyMhui">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/FhNERQGILgU0HMCuAmnuXaYhJXMR">
+<meta property="og:image" content="http://pl6hg2x3d.bkt.clouddn.com/FqOioK1O7AvrqV4Usq3L5Puk7FDq">
+<meta property="og:updated_time" content="2019-01-19T16:44:52.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库篇多表操作">
+<meta name="twitter:description" content="微信公众号：菜鸟永恒第1章    多表操作实际开发中，一个项目通常需要很多张表才能完成。例如：一个商城项目就需要分类表(category)、商品表(products)、订单表(orders)等多张表。且这些表的数据之间存在一定的关系，接下来我们将在单表的基础上，一起学习多表方面的知识。 1.1    表与表之间的关系有3类表关系：一对多（多对一）、多对多、一对一（了解）    一对多关系：">
+<meta name="twitter:image" content="http://pl6hg2x3d.bkt.clouddn.com/FgDK7YvGgNQaLgguhcxHw_BPEvaH">
+  
+    <link rel="alternate" href="/atom.xml" title="Quantity Accumulation and Quality Leap" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Quantity Accumulation and Quality Leap</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-数据库篇多表操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/20/数据库篇多表操作/" class="article-date">
+  <time datetime="2019-01-19T16:42:04.000Z" itemprop="datePublished">2019-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库篇多表操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251) none repeat scroll 0% 0%; overflow: auto; overflow-wrap: normal; word-break: normal;"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px;">微信公众号：<strong style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; font-weight: bold;"><a href="#jump_10" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">菜鸟永恒</a></strong></p><br></blockquote><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第1章    多表操作</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">实际开发中，一个项目通常需要很多张表才能完成。例如：一个商城项目就需要分类表(category)、商品表(products)、订单表(orders)等多张表。且这些表的数据之间存在一定的关系，接下来我们将在单表的基础上，一起学习多表方面的知识。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FgDK7YvGgNQaLgguhcxHw_BPEvaH" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fs_UqnLm5gMUp4-aD-UpO5aDOLtX" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.1    表与表之间的关系<br>有3类表关系：一对多（多对一）、多对多、一对一（了解）<br>    一对多关系：<br>    常见实例：学生和考试成绩(画图),客户和订单，分类和商品，部门和员工.<br>    一对多建表原则：在从表(多方)创建一个字段，字段作为外键指向主表(一方)的主键. <br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Flcn04VogD8Y4MmKZMyTjYSmFOwh" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    多对多关系：<br>    常见实例：学生和教师,商品和订单(画图),学生和课程、用户和角色<br>    多对多关系建表原则：需要创建第三张表,中间表中至少两个字段，这两个字段分别作为外键指向各自一方的主键.<br> <figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FpugUNhCOPBacvVJ2Cc8c4L7x1WH" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    一对一关系：(了解)<br>    在实际的开发中应用不多,比如QQ号码,和QQ用户信息<br>    因为一对一可以创建成一张表.<br>    两种建表原则：<br>    外键唯一：主表的主键和从表的外键（唯一），形成主外键关系，外键唯一unique。<br>    外键是主键：主表的主键和从表的主键，形成主外键关系。<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"></p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.2    外键约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">现在我们有两张表“分类表”和“商品表”，为了表明商品属于哪个分类，通常情况下，我们将在商品表上添加一列，用于存放分类cid的信息，此列称为：外键<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FnzAvKIRII4ig9OShYhfw3wyMhui" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;">此时“分类表category”称为：主表，“cid”我们称为主键。“商品表products”称为：从表，category_id称为外键。我们通过主表的主键和从表的外键来描述主外键关系，呈现就是一对多关系。<br>外键特点：<br></code></pre><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    从表外键的值是对主表主键的引用。<br>    从表外键类型，必须与主表主键类型一致。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    声明外键约束  <br>语法：alter table 从表 add [constraint] [外键名称] foreign key (从表外键字段名) references 主表 (主表的主键);<br>[外键名称] 用于删除外键约束的，一般建议“_fk”结尾<br>    alter table 从表 drop foreign key 外键名称<br>    使用外键目的：<br>    保证数据完整性</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3    一对多操作<br>1.3.1    分析<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhNERQGILgU0HMCuAmnuXaYhJXMR" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    category分类表，为一方，也就是主表，必须提供主键cid<br>    products商品表，为多方，也就是从表，必须提供外键category_id</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3.2    实现：分类和商品</p><br><h3 id="h" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">创建分类表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table category(<br>  cid int(32) PRIMARY KEY ,<br>  cname varchar(100)        #分类名称<br>);</p><br><h1 id="h-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">商品表</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE TABLE products (<br>   pid int PRIMARY KEY  ,<br>   pname VARCHAR(40) ,<br>   price DOUBLE ,<br>   category_id int<br>);</p><br><h1 id="h-2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">添加约束</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table products add constraint product_fk foreign key (category_id) references category (cid);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3.3    操作</p><br><h1 id="h1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 向分类表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO category (cid ,cname) VALUES(1,’服装’);</p><br><h1 id="h2null" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 向商品表添加普通数据,没有外键数据，默认为null</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid,pname) VALUES(1,’商品名称’);</p><br><h1 id="h3" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3 向商品表添加普通数据，含有外键信息(数据存放在)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid ,pname ,category_id) VALUES(2,’商品名称2’, 1);</p><br><h1 id="h4" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4 向商品表添加普通数据，含有外键信息(数据不存在) – 不能异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid ,pname ,category_id) VALUES(3,’商品名称2’,9);</p><br><h1 id="h5" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5 删除指定分类(分类被商品使用) – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM category WHERE cid = 1;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4    多对多<br>1.4.1    分析<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FqOioK1O7AvrqV4Usq3L5Puk7FDq" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    商品和订单多对多关系，将拆分成两个一对多。<br>    products商品表，为其中一个一对多的主表，需要提供主键pid<br>    orders 订单表，为另一个一对多的主表，需要提供主键oid<br>    orderitem中间表，为另外添加的第三张表，需要提供两个外键oid和pid<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"></p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4.2    实现：订单和商品</p><br><h3 id="h-3" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">商品表[已存在]</span></h3><br><h3 id="h-4" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">订单表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table orders(<br>  oid int PRIMARY KEY ,<br>  totalprice double     #总计<br>);</p><br><h3 id="h-5" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">订单项表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table orderitem(<br>  oid int,– 订单id<br>  pid int(50)– 商品id<br>);</p><br><h3 id="h-6" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">—- 订单表和订单项表的主外键关系</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table orderitem add constraint orderitem_orders_fk foreign key (oid) references orders(oid);</p><br><h3 id="h-7" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">—- 商品表和订单项表的主外键关系</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table orderitem add constraint orderitem_product_fk foreign key (pid) references products(pid);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4.3    操作</p><br><h1 id="h1-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 向商品表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid,pname) VALUES(3,’商品名称’);</p><br><h1 id="h2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 向订单表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orders (oid ,totalprice) VALUES(1,998);<br>INSERT INTO orders (oid ,totalprice) VALUES(2,100);</p><br><h1 id="h3-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3向中间表添加数据(数据存在)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orderitem(pid,oid) VALUES(1, 1);<br>INSERT INTO orderitem(pid,oid) VALUES(1, 2);<br>INSERT INTO orderitem(pid,oid) VALUES(2,2);</p><br><h1 id="h4-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4删除中间表的数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM orderitem WHERE pid=2  AND oid = 2;</p><br><h1 id="h5-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5向中间表添加数据(数据不存在) – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orderitem(pid,oid) VALUES(2, 3);</p><br><h1 id="h6" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">6删除商品表的数据 – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM products WHERE pid = 1;</p></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/20/数据库篇多表操作/" data-id="cjr3pegci0006jootzcoy3nmu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/19/数据库篇一/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据库篇一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/20/数据库篇多表操作/">数据库篇多表操作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/19/数据库篇一/">数据库篇一</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/17/XML/">XML</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/17/网络编程/">网络编程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/14/转换流-打印流-序列化/">转换流,打印流,序列化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Zhang Bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
