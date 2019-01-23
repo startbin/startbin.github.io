@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>操作数据库表 | Quantity Accumulation and Quality Leap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="/* DML:数据库操作语言      主要对表中的数据库进行 增删改  ****增:插入一条记录      insert into 表名 (列名1,列名2..) values (值1,值2..)      注意: 1.列名可以在表中选择一列或者几列          2.后面的值 必须和前面的列 一一对应          3.在SQL中除了int类型的数据,其他数据必须用&amp;apos;&amp;apos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作数据库表">
+<meta property="og:url" content="http://yoursite.com/2019/01/23/操作数据库表/index.html">
+<meta property="og:site_name" content="Quantity Accumulation and Quality Leap">
+<meta property="og:description" content="/* DML:数据库操作语言      主要对表中的数据库进行 增删改  ****增:插入一条记录      insert into 表名 (列名1,列名2..) values (值1,值2..)      注意: 1.列名可以在表中选择一列或者几列          2.后面的值 必须和前面的列 一一对应          3.在SQL中除了int类型的数据,其他数据必须用&amp;apos;&amp;apos">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-23T09:36:06.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作数据库表">
+<meta name="twitter:description" content="/* DML:数据库操作语言      主要对表中的数据库进行 增删改  ****增:插入一条记录      insert into 表名 (列名1,列名2..) values (值1,值2..)      注意: 1.列名可以在表中选择一列或者几列          2.后面的值 必须和前面的列 一一对应          3.在SQL中除了int类型的数据,其他数据必须用&amp;apos;&amp;apos">
+  
+    <link rel="alternate" href="/atom.xml" title="Quantity Accumulation and Quality Leap" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Quantity Accumulation and Quality Leap</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-操作数据库表" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/23/操作数据库表/" class="article-date">
+  <time datetime="2019-01-23T09:35:16.000Z" itemprop="datePublished">2019-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      操作数据库表
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>/*</p>
+<pre><code>DML:数据库操作语言
+
+    主要对表中的数据库进行 增删改
+
+****增:插入一条记录
+
+    insert into 表名 (列名1,列名2..) values (值1,值2..)
+
+    注意: 1.列名可以在表中选择一列或者几列
+
+        2.后面的值 必须和前面的列 一一对应
+
+        3.在SQL中除了int类型的数据,其他数据必须用&apos;&apos;或者&quot;&quot;引起来
+
+            我们推荐用单引号
+
+        4.如果要插入的数据所有字段都有,那么以上的
+
+           (列名1,列名2..) 可以省略
+
+****删:删除一条记录
+
+    格式: delete from 表名;//删除表中的所有记录
+
+        delete from 表名 where条件;
+
+****改:修改表中的记录信息
+
+    update 表名 set 字段名 = 值;//把所有记录的该列都改了
+
+    update 表名 set 字段名 = 值 where条件;
+</code></pre><p>*/</p>
+<p>#向students 表中插入一个学生信息(id:001 name:李四 )</p>
+<p>INSERT INTO students (sid,NAME) VALUES (‘001’,’李四’);</p>
+<p>#向students 表中插入一个学生信息(id:002 name:王五 age:18 )</p>
+<p>INSERT INTO students (sid,NAME,sage) VALUES (‘002’,’王五’,18);</p>
+<p>INSERT INTO students VALUES (‘003’,’赵六’,28);</p>
+<p>#删除students表中的记录</p>
+<p>DELETE FROM students;</p>
+<p>#删除某一条记录</p>
+<p>DELETE FROM students WHERE sid=3;# 这里条件sid=3不能写成 sid==3,sid.equals(3);</p>
+<p>#修改students表,把sage这一列的值 改为20</p>
+<p>UPDATE students SET sage=20;</p>
+<p>#修改students表,把王五的sage这一列的值 改为 50</p>
+<p>UPDATE students SET sage = 50 WHERE NAME=’王五’;# sid = 2</p>
+<p>/*</p>
+<pre><code>DQL:查询数据库中的数据
+
+    基本格式:
+
+    select [distinct] *|列名1,列名2 from 表名;# 查询表中的所有列数据
+
+    带有条件的查询 用关键字 where
+</code></pre><p>*/</p>
+<p>#基本查询</p>
+<p>SELECT * FROM product;</p>
+<p>SELECT pname,price FROM product;</p>
+<p>SELECT price FROM product;</p>
+<p>SELECT DISTINCT price FROM product;</p>
+<p>#基本查询练习</p>
+<h1 id="1-查询所有的商品"><a href="#1-查询所有的商品" class="headerlink" title="1.查询所有的商品."></a>1.查询所有的商品.</h1><p>SELECT * FROM product;</p>
+<h1 id="2-查询商品名和商品价格"><a href="#2-查询商品名和商品价格" class="headerlink" title="2.查询商品名和商品价格."></a>2.查询商品名和商品价格.</h1><p>SELECT pname,price FROM product;    </p>
+<h1 id="3-去掉价格重复值"><a href="#3-去掉价格重复值" class="headerlink" title="3.去掉价格重复值."></a>3.去掉价格重复值.</h1><p>SELECT DISTINCT price FROM product;    </p>
+<h1 id="4-查询结果是表达式（运算查询）：将所有商品的价格-10元进行显示"><a href="#4-查询结果是表达式（运算查询）：将所有商品的价格-10元进行显示" class="headerlink" title="4.查询结果是表达式（运算查询）：将所有商品的价格+10元进行显示."></a>4.查询结果是表达式（运算查询）：将所有商品的价格+10元进行显示.</h1><p>SELECT price+10 FROM product;</p>
+<h1 id="5-别名查询-使用的关键字是as（as可以省略的）"><a href="#5-别名查询-使用的关键字是as（as可以省略的）" class="headerlink" title="5.别名查询.使用的关键字是as（as可以省略的）."></a>5.别名查询.使用的关键字是as（as可以省略的）.</h1><p>SELECT price+10 AS 打折价格 FROM product;</p>
+<p>SELECT price+10 打折价格 FROM product;</p>
+<p>#条件查询练习</p>
+<p>#查询商品名称为“花花公子”的商品所有信息：</p>
+<p>SELECT * FROM product WHERE pname=’花花公子’;</p>
+<p>#查询价格为800商品</p>
+<p>SELECT * FROM product WHERE price=800;</p>
+<p>#查询价格不是800的所有商品</p>
+<p>SELECT * FROM product WHERE price &lt;&gt; 800;</p>
+<p>SELECT * FROM product WHERE price &gt; 800 OR price &lt; 800;</p>
+<p>SELECT * FROM product WHERE NOT (price=800);</p>
+<p>#查询商品价格大于60元的所有商品信息</p>
+<p>SELECT * FROM product WHERE price &gt; 60;</p>
+<p>SELECT * FROM product WHERE NOT (price &lt;= 60);</p>
+<p>#查询商品价格在200到1000之间所有商品</p>
+<p>SELECT * FROM product  WHERE price &gt;= 200 AND price &lt;=1000;</p>
+<p>SELECT * FROM product  WHERE price BETWEEN 200 AND 1000;</p>
+<p>#查询商品价格是200或800的所有商品</p>
+<p>SELECT * FROM product WHERE price IN (200,800);</p>
+<p>SELECT * FROM product  WHERE price = 200 OR price = 800;</p>
+<p>#查询含有’霸’字的所有商品</p>
+<p>SELECT * FROM product WHERE pname  LIKE ‘%霸%’;</p>
+<p>#查询以’香’开头的所有商品</p>
+<p>SELECT * FROM product WHERE pname LIKE ‘香%’;</p>
+<p>#查询第二个字为’想’的所有商品</p>
+<p>SELECT * FROM product WHERE pname LIKE ‘_想%’;</p>
+<p>#查询没有分类的商品</p>
+<p>SELECT * FROM product WHERE category_id IS NULL;</p>
+<p>#SELECT * FROM product where category_id = null;# 错误的 判断空 不能用”=”</p>
+<p>#查询有分类的商品</p>
+<p>SELECT * FROM product WHERE category_id IS NOT NULL;</p>
+<p>#SELECT * FROM product WHERE category_id &lt;&gt; NULL;# 错误的 判断不为空 不用”&lt;&gt;”</p>
+<p>#查询所有价格大于2000的电脑商品(catetory_id是c001)</p>
+<p>#或者价格大于2000的服装商品(catetory_id是c002)**</p>
+<p>SELECT * FROM product WHERE (price &gt; 2000 AND category_id = ‘c001’) </p>
+<pre><code>OR (price &gt; 2000 AND category_id = &apos;c002&apos;);
+</code></pre><p>SELECT * FROM product WHERE price &gt; 2000 AND category_id IN (‘c001’,’c002’);</p>
+<p>/*</p>
+<pre><code>SQL语言的分类:
+
+DDL:数据库定义语言
+
+    他主要是对数据库,数据库表进行创建删除维护等
+
+    关键字:create(创建)，alter(修改)，drop(删除), show(查)
+
+
+
+DCL:数据库操纵/控制语言
+
+    控制数据库访问权限
+
+DML:数据库操作语言
+
+    它主要是对表中的数据进行 增删改
+
+    关键字:insert(增加)，delete(删除)，update(修改)等
+
+
+
+DQL:数据库查询语言
+
+    它主要是对表中的数据进行 查询
+
+    关键字:select(查询) from(从)  where(条件)
+</code></pre><p>*/</p>
+<p>#注释</p>
+<p>– 注释</p>
+<p>SELECT * FROM users;</p>
+<p>/*</p>
+<pre><code>DDL:数据库定义语言
+
+    主要是操作数据库,操作数据库表
+
+DDL之操作数据库:
+
+    对数据库进行增删改查
+
+****增:创建一个数据库
+
+    create database 数据库名;//默认编号,安装的时候您选择的那个编号
+
+    create database 数据库名 charset 编码;
+
+删:删除一个数据库
+
+    drop database 数据库名;
+
+修:修改数据库名字很麻烦 
+
+    修改正在使用的数据库
+
+    use 数据库名;
+
+查:
+
+  查询正在使用的数据库:
+
+    select database();
+
+  查询所有的数据库
+
+    show databases;
+</code></pre><p>*/</p>
+<p>#增:创建一个数据库</p>
+<p>CREATE DATABASE db297;</p>
+<p>CREATE DATABASE db2971 CHARSET utf8;</p>
+<p>#删:删除一个数据库</p>
+<p>DROP DATABASE db2971;</p>
+<p>#修改正在使用的数据库</p>
+<p>USE jjj;</p>
+<p>#查询正在使用的数据库</p>
+<p>SELECT DATABASE();</p>
+<p>#查询所有数据库</p>
+<p>SHOW DATABASES;</p>
+<p>#查询某一个数据的详细信息</p>
+<p>SHOW CREATE DATABASE db297;</p>
+<p>/*</p>
+<pre><code>DDL之数据库表
+
+对数据库表进行增删改查
+
+****增:创建一个表
+
+create table 表名(
+
+    字段名1 数据类型1(长度) [约束],
+
+    字段名2 数据类型2(长度) [约束]
+
+    );
+
+删:删除表
+
+    drop table 表名;
+
+查:查看表
+
+    desc 表名; 查看一个表的详细信息
+
+    show tables;查看所有的表
+
+改:改名字
+
+    rename table 表名 to 新表名;
+</code></pre><p>*/</p>
+<p>#创建一个表,学生表(编号,姓名,年龄)</p>
+<p>CREATE TABLE student(</p>
+<pre><code>sid INT PRIMARY KEY, -- 主键约束
+
+sname VARCHAR(30),
+
+sage INT
+</code></pre><p>);</p>
+<p>#删除 student表</p>
+<p>DROP TABLE student;</p>
+<p>#查看一个表的详细信息</p>
+<p>DESC student;</p>
+<p>#查看所有的表</p>
+<p>SHOW TABLES;</p>
+<p>#修改表的名字</p>
+<p>RENAME TABLE student TO students;</p>
+<p>/*</p>
+<pre><code>DDL之修改表中的列
+
+    增删改查
+
+增:增加一个列
+
+    alter table 表名 add 列名 类型(长度) [约束]
+
+删:删除一个列
+
+    alter table 表名 drop 列名;
+
+查:查看表的数据结构
+
+    desc 表名;
+
+改:修改列
+
+    可以修改的名字,类型,约束等..
+
+    修改列名:
+
+    alter table 表名 change 旧列名 新列名 类型(长度) 约束; 
+
+    修改列的类型和约束
+
+    alter table 表名 modify 列名 类型(长度) 约束;
+
+    修改表的字符集
+
+    alter table 表名 character set 字符集;(一般不修改)
+</code></pre><p>*/</p>
+<p>#要给students表 添加一列 “电话”</p>
+<p>ALTER TABLE students ADD phone VARCHAR(30);</p>
+<p>#要把students表中 “电话”这一列删除</p>
+<p>ALTER TABLE students DROP phone;</p>
+<p>#查看students表有多少列 分别是什么</p>
+<p>DESC students;</p>
+<p>#修改列名</p>
+<p>ALTER TABLE students CHANGE sname NAME VARCHAR(30);</p>
+<p>#修改列的类型和约束</p>
+<p>ALTER TABLE students MODIFY NAME VARCHAR(50);</p>
+<p>/*</p>
+<pre><code>三个知识点:
+
+1.介绍两个约束
+
+    主键约束: primary key 被主键约束的列必须有唯一,而且不能为空
+
+    自动增长约束:auto_increment 被自动增长约束的列,值可以不用管
+
+
+
+2.删除表所有数据的两种方式(面试题)
+
+    delete from 表名;# 删除表的所有数据,但是自动增长值不会重置为1
+
+    truncate  table  表名;# 删除表的所有数据,并且重置自动增长值为1
+
+    truncate的底层,是先摧毁表,然后再重建表
+
+3.乱码问题
+
+    在DOS创建 查询uft8编码的数据库数据时,会出现乱码
+
+    解决方案:
+
+        临时方案:
+
+        set names gbk;//临时地把告诉数据库 我们用gbk来查询
+
+        永久方案:修改 my.ini的配置文件(不建议)
+</code></pre><p>*/</p>
+<p>#创建一张表,用户(编号,用户名,密码)</p>
+<p>CREATE TABLE users(</p>
+<pre><code>uid INT PRIMARY KEY AUTO_INCREMENT,# 自动增长默认是从1开始
+
+uname VARCHAR(30),
+
+upass VARCHAR(30)
+</code></pre><p>);</p>
+<p>#插入数据</p>
+<p>INSERT INTO users (uname,upass) VALUES (‘王老’,’123321’);</p>
+<p>INSERT INTO users (uname,upass) VALUES (‘李四’,’123’);</p>
+<p>#删除表中的所有数据</p>
+<p>DELETE FROM users;</p>
+<p>INSERT INTO users (uname,upass) VALUES (‘王五’,’1234’);</p>
+<p>#使用truncate删除表中的所有数据</p>
+<p>TRUNCATE TABLE users;</p>
+<p>INSERT INTO users (uname,upass) VALUES (‘赵六’,’12345’);</p>
+<p>/*</p>
+<pre><code>1.DDL:操作数据库中对象,数据库,表,列
+
+***创建数据库
+
+    create database 数据库名;# 以默认的编码创建数据库
+
+    create database 数据库名 charset 编码名;
+
+    create database 数据库名 character set 编码名;
+
+***创建表
+
+    create table 表名(
+
+        字段1 数据类型(长度) [约束],
+
+        字段2 数据类型(长度) [约束]
+
+        );    
+
+    约束:
+
+        主键约束:primary key,该列的值必须唯一,并且不为空
+
+        自动增长列约束:auto_increment 该列值交给数据库维护
+
+2.DML:操作数据库表中数据,对数据进行增删改
+
+****添加一条记录
+
+    insert into 表名 (列名1.列名2..) values (值1,值2..);
+
+    注意:
+
+        1.列名和后面的值 必须一一对应
+
+        2.(列名1.列名2..) 这里的列名可以写一个或者多个
+
+        3.如果是全列名,可以省略不写
+
+        4.如果值是数字类型的可以不加&apos;&apos;,否则必须加上&apos;&apos; 或者 &quot;&quot;
+
+****删除一条记录
+
+    delete from 表名;# 删除表中所有数据,不会重置自动增长值
+
+    truncate table 表名;#删除表所有数据,先把表摧毁再重建
+
+    delete from 表名 where 条件;# 这里条件和查询共用
+
+
+
+****修改一条记录
+
+    update 表名 set 字段名=值,字段名=值;#表中所有记录的字段都修改了
+
+    update 表名 set 字段名=值,字段名=值 where 条件;# 这里条件和查询共用
+
+
+
+3.DQL:操作数据库表中数据,对数据进行查询
+
+***基本查询:
+
+    格式:
+
+    select distinct *|字段1,字段2 from 表名;
+
+***条件查询
+
+    比较条件
+
+        &gt;,&lt;,&gt;=,&lt;=,&lt;&gt;,=
+
+        between xx and xx (含头行尾)
+
+        in (值1,值2)
+
+        like &apos;_a%&apos; 模糊查询
+
+        is null ,is not null 判断空或者不空
+
+    逻辑条件
+
+        与 and
+
+        或 or
+
+        非 not
+</code></pre><p>*/</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/23/操作数据库表/" data-id="cjr8zv5rc0003f0ot9wjspjuq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/22/面向对象接口多态/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面向对象接口多态</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/23/操作数据库表/">操作数据库表</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/面向对象接口多态/">面向对象接口多态</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/多表查询/">多表查询</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/SQL语句查询/"> SQL语句查询</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/20/数据库篇多表操作/">数据库篇多表操作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Zhang Bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
