@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>认识docker | Quantity Accumulation and Quality Leap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、Docker工作原理 二、Docker容器和虚拟机对比 三、镜像容器管理 1、Docker关键组件 2、Docker架构 3、Docker内部组件  镜像（Image）——一个特殊的文件系统Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等） 容器（Container)——镜像运行时的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识docker">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/认识docker/index.html">
+<meta property="og:site_name" content="Quantity Accumulation and Quality Leap">
+<meta property="og:description" content="一、Docker工作原理 二、Docker容器和虚拟机对比 三、镜像容器管理 1、Docker关键组件 2、Docker架构 3、Docker内部组件  镜像（Image）——一个特殊的文件系统Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等） 容器（Container)——镜像运行时的">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d6446d770ba1?w=618&h=383&f=png&s=112398">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d66c3d8e5fe8?w=577&h=345&f=png&s=102216">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d688612d6b8d?w=772&h=497&f=png&s=119963">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d6a857ea383f?w=710&h=415&f=png&s=88999">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d7e49a1dc932?w=1133&h=462&f=png&s=23335">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d8439ed067b4?w=542&h=420&f=png&s=15322">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d864fcbb43b0?w=613&h=417&f=png&s=17597">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d87aabfcc242?w=1229&h=438&f=png&s=17621">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689db5910bd1a14?w=616&h=436&f=png&s=305373">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689db7a43c33801?w=615&h=425&f=png&s=69109">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689dbc0e4abc1e1?w=675&h=424&f=png&s=94742">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689dbe5857f1a46?w=662&h=438&f=png&s=96869">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689dc0b01827480?w=690&h=276&f=png&s=93621">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689dc0f729c115c?w=1243&h=304&f=png&s=18508">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689dc31f972d206?w=652&h=433&f=png&s=169477">
+<meta property="og:updated_time" content="2019-01-30T09:01:29.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认识docker">
+<meta name="twitter:description" content="一、Docker工作原理 二、Docker容器和虚拟机对比 三、镜像容器管理 1、Docker关键组件 2、Docker架构 3、Docker内部组件  镜像（Image）——一个特殊的文件系统Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等） 容器（Container)——镜像运行时的">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/1/30/1689d6446d770ba1?w=618&h=383&f=png&s=112398">
+  
+    <link rel="alternate" href="/atom.xml" title="Quantity Accumulation and Quality Leap" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Quantity Accumulation and Quality Leap</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-认识docker" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/认识docker/" class="article-date">
+  <time datetime="2019-01-30T08:59:22.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      认识docker
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、Docker工作原理</p>
+<p>二、Docker容器和虚拟机对比</p>
+<p>三、镜像容器管理</p>
+<p>1、Docker关键组件</p>
+<p>2、Docker架构</p>
+<p>3、Docker内部组件</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d6446d770ba1?w=618&amp;h=383&amp;f=png&amp;s=112398" alt=""></p>
+<p>镜像（Image）——一个特殊的文件系统<br>Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）</p>
+<p>容器（Container)——镜像运行时的实体<br>容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等</p>
+<p>仓库（Repository）——集中存放镜像文件的地方<br>镜像构建完成后，可以很容易的在当前宿主上运行，但是， 如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry就是这样的服务</p>
+<p>Docker采用了C/S架构。客户端和服务端可以运行在一个机器上,也可以通过socket或者RESTful API 来进行通信。<br>Docker  Daemon： 一般在宿主机后台运行,等待接收客户端的消息<br>Docker Client：则为客户提供一系列可执行的命令, 用户使用这些命令跟docker daemon交互</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d66c3d8e5fe8?w=577&amp;h=345&amp;f=png&amp;s=102216" alt=""></p>
+<p>Docker daemon：<br>Docker daemmon是Docker架构中的主要用户接口。首先，它提供了API Server用于接收来自Docker client的请求，其后根据不同的请求分发给Docker daemon的不同模块执行相应的工作</p>
+<p>Image managerment：<br>需要创建DOcker容器时，可通过镜像管理（image management）部分的distribution和registry模块从Docker registry中下载镜像，并通过镜像管理的image、reference和layer存储镜像的元数据，通过镜像存储驱动graphdriver将镜像文件存储于具体的文件系统中</p>
+<p>Network：<br>当需要为Docker容器创建网络环境时，通过网络模块network调用libnetwork创建并配置Docker容器的网络环境</p>
+<p>Volume：<br>当需要为容器创建数据卷volume时，则通过volume模块调用某个具体的volumedrive，来创建一个数据卷并负责后续的挂载操作</p>
+<p>Execdriver:<br>当需要限制Docker容器运行资源或执行用户指令操作时，则通过execdrive来完成</p>
+<p>Libcontainer:<br>是对cgroups和namespace的二次封装，execdrive是通过libcontainer来实现对容器的具体管理，包括利用UTS、IPC、PID、Network、Mount、User等namespace实现容器之间的资源隔离和利用cgroups实现对容器的资源限制.当运行容器的命令执行完毕后，一个实际的容器就处于运行状态，该容器具有独立的文件系统、相对安全且相互隔离的运行环境.</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d688612d6b8d?w=772&amp;h=497&amp;f=png&amp;s=119963" alt=""></p>
+<p>1、用户是使用Docker Client与Docker Daemon建立通信，并发送请求给后者</p>
+<p>2、Engine执行Docker内部的一系列工作，每一项工作都是以一个Job的形式的存在。</p>
+<p>3、Job的运行过程中，当需要容器镜像时，则从Docker Registry中下载镜像，并通过镜像管理驱动graphdriver将下载镜像以Graph的形式存储；当需要为Docker创建网络环境时，通过网络管理驱动networkdriver创建并配置Docker容器网络环境；当需要限制Docker容器运行资源或执行用户指令等操作时，则通过execdriver来完成。libcontainer是一项独立的容器管理包，networkdriver以及execdriver都是通过libcontainer来实现具体对容器进行的操作。</p>
+<p>1、容器和虚拟机对比</p>
+<p>2、Docker的优势</p>
+<p>3、Docker的劣势</p>
+<p>4、Docker的应用场景</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d6a857ea383f?w=710&amp;h=415&amp;f=png&amp;s=88999" alt=""></p>
+<p>Docker 的的优势：</p>
+<p>持续部署和测试<br>发到产品发布的整个过程中使用相同的容器来确保没有任何差异或者人工干预。Docker可以保证测试环境、开发环境、生产环境的一致性。</p>
+<p>可移植性<br>容器可以移动到任意一台Docker主机上，而不需要过多关注底层系统。</p>
+<p>弹性伸缩更快速<br>配合K8S可以很容易的无状态应用的弹性伸缩，只需要改一个yml的数字即可。利用docker能在几秒钟之内启动大量的容器，这是虚拟机无法办到的，快速启动，秒级和分钟级的对比。</p>
+<p>资源利用率高<br>由于docker不需要Hypervisor实现硬件资源虚拟化，docker容器和内核交互，几乎没有性能损耗，性能优于通过Hypervisor层与内核层的虚拟化。一台机器启动上前台容器也没问题。</p>
+<p>对硬件无要求<br>不需要CPU支持虚拟化</p>
+<p>Docker 的的劣势</p>
+<p>资源隔离<br>docker是利用cgroup实现资源隔离的，只能限制资源消耗的最大值，而不能隔绝其他应用程序占用自己的资源； docker属于进程之间的隔离，虚拟机可实现系统级别隔离；</p>
+<p>安全性问题<br>一个用户拥有执行docker的权限，可以删除任何用户创建的容器。</p>
+<p>兼容性问题<br>docker目前还在版本快速更新中，细节功能调整较大，一些核心的模块依赖于高版本的内核，存在兼容性的问题。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d7e49a1dc932?w=1133&amp;h=462&amp;f=png&amp;s=23335" alt=""></p>
+<p>1、Docker安装</p>
+<p>2、认识镜像和容器</p>
+<p>3、镜像容器管理</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d8439ed067b4?w=542&amp;h=420&amp;f=png&amp;s=15322" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d864fcbb43b0?w=613&amp;h=417&amp;f=png&amp;s=17597" alt=""></p>
+<p>什么是镜像？<br>镜像是一个多层的联合只读的文件系统。</p>
+<p>什么是容器？<br>容器是在镜像基础上加上读写层。容器即进程。</p>
+<p>构建镜像的过程？<br>镜像-&gt;镜像+可写层+执行命令-&gt;commit为新的镜像(新的一层)-&gt;镜像+可写层+执行命令-&gt;commit为新的镜像(新的一层)-&gt;…</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689d87aabfcc242?w=1229&amp;h=438&amp;f=png&amp;s=17621" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689db5910bd1a14?w=616&amp;h=436&amp;f=png&amp;s=305373" alt=""></p>
+<p>典型文件系统启动 ：<br>一个典型的 Linux 文件系统由 bootfs 和 rootfs 两部分组成，</p>
+<p>bootfs(boot file system) </p>
+<p>主要包含 bootloader 和 kernel，bootloader 主要用于引导加载 kernel，当 kernel 被加载到内存中后 bootfs 会被 umount 掉</p>
+<p>rootfs (root file system)</p>
+<p>包含的就是典型 Linux 系统中的/dev，/proc，/bin，/etc 等标准目录和文件</p>
+<p>加载过程：<br>bootfs 时会先将 rootfs 设为 read-only，然后在系统自检之后将 rootfs 从 read-only 改为 read-write，</p>
+<p>Docker文件系统启动：</p>
+<p>Docker 在 bootfs 自检完毕之后并不会把 rootfs 的 read-only 改为 read-write，而是利用 union mount（UnionFS 的一种挂载机制）将 image 中的其他的 layer 加载到之前的 read-only 的 rootfs 层之上，每一层 layer 都是 rootfs 的结构，并且是read-only 的。所以，我们是无法修改一个已有镜像里面的 layer 的！只有当我们创建一个容器，也就是将 Docker 镜像进行实例化，系统会分配一层空的 read-write 的 rootfs ，用于保存我们做的修改</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689db7a43c33801?w=615&amp;h=425&amp;f=png&amp;s=69109" alt=""></p>
+<p>Dockerfile</p>
+<p>FROM centos</p>
+<p>ENV TZ “Asia/Shanghai”</p>
+<p>ADD echo.sh /opt/echo.sh</p>
+<p>RUN chmod +x /opt/echo.sh</p>
+<p>CMD [“/opt/echo.sh”]</p>
+<p>docker build -t test -f Dockerfile . </p>
+<p>镜像工作原理：<br>如果运行中的容器修改一个已经存在的文件，那么会将该文件从下面的只读层复制到读写层，只读层的这个文件就会覆盖（隐藏），但还存在。<br>如果删除一个文件，在最上层会被标记隐藏，实际只读层的文件还存在。<br>这就实现了文件系统隔离，当删除容器后，读写层的数据将会删除，只读镜像不变。</p>
+<p>查看具体的挂载逻辑</p>
+<p>[root@centos7 l]# mount|grep overlay</p>
+<p>overlay on </p>
+<p>/var/lib/docker/overlay2/56375ce93fd54484061ef08a48a7093905be680dd14754642970616127b30fca/merged type overlay (rw,relatime,seclabel,lowerdir=/var/lib/docker/overlay2/l/A6JYT4QIFZMKOPIGY675JWKS7F:/var/lib/docker/overlay2/l/4L4SUINS3DX6XPD5BL2J54JQDT,upperdir=/var/lib/docker/overlay2/56375ce93fd54484061ef08a48a7093905be680dd14754642970616127b30fca/diff,workdir=/var/lib/docker/overlay2/56375ce93fd54484061ef08a48a7093905be680dd14754642970616127b30fca/work)</p>
+<p>Overlay和overlay2的区别</p>
+<p>overlay: 只挂载一层,其他层通过最高层通过硬连接形式共享(增加了磁盘inode的负担)</p>
+<p>overlay2: 逐层挂载（最多128层）</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689dbc0e4abc1e1?w=675&amp;h=424&amp;f=png&amp;s=94742" alt=""></p>
+<p>基础镜像的层信息</p>
+<p>docker pull centos</p>
+<p>tree -L 2 /var/lib/docker/overlay2/</p>
+<p>构建后镜像的层信息</p>
+<p>cd layer_dockerfile/</p>
+<p>docker build -t centos:test -f ./Dockerfile  .</p>
+<p>tree -L 2 /var/lib/docker/overlay2/</p>
+<p>每一层都包含了”该层独有的文件”以及”和其低层共享的数据的连接”，在Docker 1.10之前的版本中，目录的名字和镜像的UUID相同，而Docker 1.10后则采用了新的存储方式，可以看到目录名和下载镜像的UUID并不相同</p>
+<p>Diff<br>存放挂载点的具体的文件内容</p>
+<p>Link<br>对应l目录的链接源的名称</p>
+<p>Lower<br>根没有lower，其它的lower指向的父层的链接</p>
+<p>L：<br>”l“目录包含一些符号链接作为缩短的层标识符. 这些缩短的标识符用来避免挂载时超出页面大小的限制</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689dbe5857f1a46?w=662&amp;h=438&amp;f=png&amp;s=96869" alt=""></p>
+<p>docker run -idt  –name centos_con centos:test /bin/bash</p>
+<p>tree -L 2 /var/lib/docker/overlay2/</p>
+<p>多出的两层“……”为读写层，“…..-init”为初始层。</p>
+<p>初始层：</p>
+<p>初始层中大多是初始化容器环境时，与容器相关的环境信息，如容器主机名，主机host信息以及域名服务文件等。</p>
+<p>读写层：</p>
+<p>所有对容器做出的改变都记录在读写层</p>
+<p>Diff<br>存放挂载点的具体的文件内容</p>
+<p>Link<br>对应l目录的链接源的名称</p>
+<p>Lower<br>根没有lower，其它的lower指向的父层的链接</p>
+<p>Merged<br>如果是读写层会有一个Merged</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689dc0b01827480?w=690&amp;h=276&amp;f=png&amp;s=93621" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689dc0f729c115c?w=1243&amp;h=304&amp;f=png&amp;s=18508" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/30/1689dc31f972d206?w=652&amp;h=433&amp;f=png&amp;s=169477" alt=""></p>
+<p>Commit:容器提交为镜像</p>
+<p>docker run -idt –name test centos</p>
+<p>Touch liwei</p>
+<p>docker commit 6de test2</p>
+<p>Create:创建容器但是不启动</p>
+<p>docker create  –name nginx-con -p80:80  nginx:latest</p>
+<p>Start:启动容器</p>
+<p>docker start nginx-con</p>
+<p>Stop:停止容器</p>
+<p>docker stop nginx-con</p>
+<p>Kill:杀掉容器，和停止相比不友好</p>
+<p>docker kill nginx-con</p>
+<p>Pause:暂停容器</p>
+<p>docker pause nginx-con</p>
+<p>Unpause:恢复暂停的容器</p>
+<p>docker unpause nginx-con</p>
+<p>Run:创建且启动容器</p>
+<p>docker run -idt –restart=always –name nginx_con -v /tmp/:/mnt -p 88:80 -e arg1=arg1 nginx<br>Docker attach nginx_con<br>Ctrl+^p+^q</p>
+<p>CP:宿主机和容器之间copy文件</p>
+<p>docker cp docker_install.sh nginx_con:/opt</p>
+<p>docker exec nginx_con ls /opt</p>
+<p>docker cp nginx_con:/opt/docker_install.sh ./1.sh</p>
+<p>Exec:执行命令，也可附加到容器</p>
+<p>docker exec nginx_con ls /opt</p>
+<p>Attach：附加到容器</p>
+<p>docker attach nginx_con</p>
+<p>docker exec -it nginx_con /bin/bash</p>
+<p>Logs:查看容器日志</p>
+<p>docker logs –f nginx_con</p>
+<p>Inspect:查看元数据，可以查看镜像和容器</p>
+<p>docker inspect nginx_con</p>
+<p>Port:查看容器端口映射</p>
+<p>docker port nginx_con</p>
+<p>Top：查看容器中正在运行的进程</p>
+<p>docker top nginx_con</p>
+<p>Ps：查看容器</p>
+<p>docker ps</p>
+<p>docker ps -a</p>
+<p>docker  ps  -aq</p>
+<p>查看正在运行的容器，加上-a查看所有容器（包含停止和暂停状态的容器）</p>
+<p>Rm：删除容器</p>
+<p>docker rm nginx_con    删除容器</p>
+<p>docker rm -f nginx_con 强行删除容器</p>
+<p>Export：导出容器</p>
+<p>docker pull busybox</p>
+<p>docker run -itd busybox</p>
+<p>docker export 983989307eef&gt;busybox.tar</p>
+<p>Import:导入容器</p>
+<p>docker import busybox.tar busybox:1.3</p>
+<p>Save：导出镜像</p>
+<p>docker save busybox:1.3&gt;busybox1.3.tar</p>
+<p>Load：导入镜像</p>
+<p>docker load -i busybox1.3.tar </p>
+<p>Tag：镜像打标签</p>
+<p>docker tag busybox:1.3  192.168.199.160/test/busybox:latest</p>
+<p>Build：从dockerfile构建镜像</p>
+<p>FROM centos</p>
+<p>ENV TZ “Asia/Shanghai”</p>
+<p>ADD echo.sh /opt/echo.sh</p>
+<p>RUN chmod +x /opt/echo.sh</p>
+<p>CMD [“/opt/echo.sh”]</p>
+<p>docker build -t centos:test -f Dockerfile . </p>
+<p>Pull：从 registry拉取镜像</p>
+<p>docker pull nginx   从dockerhub上拉取</p>
+<p>docker pull 192.168.199.160/test/nginx:latest  从内网harbor上拉取</p>
+<p>Push:推送镜像到仓库[第一次需要输入密码，后续不需要了]</p>
+<p>docker login 192.168.199.160</p>
+<p>admin</p>
+<p>Harbor12345</p>
+<p>docker push  192.168.199.160/test/busybox:latest</p>
+<p>Info、version、events</p>
+<p>docker info 查看docker相关信息信息</p>
+<p>Docker version 查看docker相关版本信息</p>
+<p>Docker events 查看docker事件</p>
+<p>【注】<br>1、创建容器后防火墙不要再动</p>
+<p>2、cmd会被覆盖的问题，需要注意，可能会导致/bin/bash 把启动命令覆盖了，启动不了的问题例如<br>docker run -idt –restart=always –name nginx_con -v /tmp/:/mnt -p 88:80 -e arg1=arg1 nginx /bin/bash</p>
+<p>3、cmd的命令都会在挂在后执行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/30/认识docker/" data-id="cjriyovyo0006v4otkwitr9mq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/26/Java面试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java面试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/30/认识docker/">认识docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/Java面试/">Java面试</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/数据库条件查询/">数据库条件查询</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/23/操作数据库表/">操作数据库表</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/面向对象接口多态/">面向对象接口多态</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Zhang Bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
