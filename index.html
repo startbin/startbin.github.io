@@ -62,6 +62,372 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JDBC" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/24/JDBC/" class="article-date">
+  <time datetime="2019-02-24T14:38:40.000Z" itemprop="datePublished">2019-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/24/JDBC/">JDBC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JDBC概述</p>
+<p>1.1.1什么是JDBC<br>JDBC（Java<br>DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java<br>API。JDBC是Java访问数据库的标准规范，可以为不同的关系型数据库提供统一访问，它由一组用Java语言编写的接口(大部分)和类组成。</p>
+<p>1.1.2什么是数据库驱动<br>JDBC需要连接驱动，驱动是两个设备要进行通信，满足一定通信数据格式，数据格式由设备提供商规定，设备提供商为设备提供驱动软件，通过软件可以与该设备进行通信。<br>今天我们使用的是mysql的驱动mysql-connector-java-5.1.37-bin.jar</p>
+<p>JDBC与数据库驱动的关系:接口与实现的关系。<br><img src="https://i.imgur.com/rtHrMgC.png" alt=""></p>
+<p>JDBC规范（掌握四个核心对象）：<br>DriverManager:用于注册驱动<br>Connection: 表示与数据库创建的连接<br>Statement: 操作数据库sql语句的对象<br>ResultSet: 结果集或一张虚拟表</p>
+<p>1.2JDBC原理<br>Java提供访问数据库规范称为JDBC，而生产厂商提供规范的实现类称为驱动</p>
+<p><img src="https://i.imgur.com/jB8ISfz.png" alt=""></p>
+<p>JDBC是接口，驱动是接口的实现，没有驱动将无法完成数据库连接，从而不能操作数据库！每个数据库厂商都需要提供自己的驱动，用来连接自己公司的数据库，也就是说驱动一般都由数据库生成厂商提供。</p>
+<p>1.3JDBC入门案例<br>1.3.1准备数据<br>之前我们学习了sql语句的使用，并创建的分类表category，今天我们将使用JDBC对分类表进行增删改查操作。<br>创建数据库</p>
+<p>create database day04;<br>使用数据库</p>
+<p>use day04;<br>创建分类表</p>
+<p>create table category(<br>cid int PRIMARY KEY AUTO_INCREMENT,<br>cname varchar(100)<br>);<br>初始化数据</p>
+<p>insert into category (cname) values(‘家电’);<br>insert into category (cname) values(‘服饰’);<br>insert into category (cname) values(‘化妆品’);<br>1.3.2导入驱动jar包<br>创建lib目录，用于存放当前项目需要的所有jar包<br>选择jar包，右键执行build path / Add to Build Path<br><img src="https://i.imgur.com/L2Pv58f.png" alt=""></p>
+<p>1.3.3开发步骤</p>
+<pre><code>注册驱动.
+
+获得连接.
+
+获得执行sql语句的对象
+
+执行sql语句，并返回结果
+
+处理结果
+
+释放资源.
+</code></pre><p>1.3.4案例实现</p>
+<p>@Test<br>//// 查询所有的分类信息<br>public void demo1() throws Exception{<br>    // 注意：使用JDBC规范，采用都是 java.sql包下的内容<br>    //1 注册驱动<br>    Class.forName(“com.mysql.jdbc.Driver”);<br>    //2 获得连接<br>    String url = “jdbc:mysql://localhost:3306/mydb”;<br>    Connection conn = DriverManager.getConnection(url, “root”, “root”);<br>    //3获得执行sql语句的对象<br>    Statement stmt = conn.createStatement();<br>    //4执行SQL语句<br>    ResultSet rs = stmt.executeQuery(“select  from category”);</p>
+<pre><code>//5处理结果集
+while(rs.next()){
+    // 获得一行数据
+    Integer cid = rs.getInt(&quot;cid&quot;);
+    String cname = rs.getString(&quot;cname&quot;);
+    System.out.println(cid + &quot; , &quot; + cname);
+}
+//6释放资源
+rs.close();
+stmt.close();
+conn.close();
+</code></pre><p>}</p>
+<p>1.4API详解</p>
+<p>1.4.1API详解：注册驱动</p>
+<p>DriverManager.registerDriver(new com.mysql.jdbc.Driver());不建议使用<br>原因有2个：</p>
+<pre><code>导致驱动被注册2次。
+强烈依赖数据库的驱动jar
+解决办法：
+Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+</code></pre><p>1.4.2API详解：获得链接</p>
+<p>static Connection getConnection(String url, String user, String password)<br>试图建立到给定数据库 URL 的连接。<br>参数说明：url 需要连接数据库的位置（网址） user用户名password 密码<br>例如：getConnection(“jdbc:mysql://localhost:3306/day06”, “root”, “root”);</p>
+<p>URL:SUN公司与数据库厂商之间的一种协议。<br>jdbc:mysql://localhost:3306/day06<br>协议 子协议IP : 端口号数据库<br>mysql: jdbc:mysql://localhost:3306/day04或者jdbc:mysql:///day14（默认本机连接）</p>
+<p>oracle数据库: jdbc:oracle:thin:@localhost:1521:sid</p>
+<p>1.4.3java.sql.Connection接口：一个连接</p>
+<p>接口的实现在数据库驱动中。所有与数据库交互都是基于连接对象的。</p>
+<p>StatementcreateStatement(); //创建操作sql语句的对象</p>
+<p>1.4.4API详解：java.sql.Statement接口: 操作sql语句，并返回相应结果</p>
+<p>String sql = “某SQL语句”;<br>获取Statement语句执行平台：Statement stmt = con.createStatement();<br>常用方法：<br>int executeUpdate(String sql); –执行insert update delete语句.<br>ResultSet executeQuery(String sql); –执行select语句.<br>boolean execute(String sql); –仅当执行select并且有结果时才返回true，执行其他的语句返回false.</p>
+<p>1.4.5API详解：处理结果集（注：执行insert、update、delete无需处理）</p>
+<p>ResultSet实际上就是一张二维的表格，我们可以调用其boolean</p>
+<p>next()方法指向某行记录，当第一次调用next()方法时，便指向第一行记录的位置，这时就可以使用ResultSet提供的getXXX(int<br>col)方法(与索引从0开始不同个，列从1开始)来获取指定列的数据：<br>rs.next();//指向第一行<br>rs.getInt(1);//获取第一行第一列的数据<br>常用方法：<br>Object getObject(int index) / Object getObject(String name) 获得任意对象<br>String getString(int index)/ String getString(String name) 获得字符串<br>int getInt(int index)/int getInt(String name) 获得整形<br>double getDouble(int index)/ double getDouble(String name) 获得双精度浮点型</p>
+<p>1.4.6API详解：释放资源</p>
+<p>与IO流一样，使用后的东西都需要关闭！关闭的顺序是先得到的后关闭，后得到的先关闭。<br>rs.close();<br>stmt.close();<br>con.close();</p>
+<p>1.5JDBC工具类</p>
+<p>“获得数据库连接”操作，将在以后的增删改查所有功能中都存在，可以封装工具类JDBCUtils。提供获取连接对象的方法，从而达到代码的重复利用。<br>该工具类提供方法：public static Connection getConn ()。代码如下：</p>
+<p>public class JdbcUtils {</p>
+<pre><code>private static String driver = &quot;com.mysql.jdbc.Driver&quot;;
+private static String url = &quot;jdbc:mysql://localhost:3306/webdb_4&quot;;
+private static String user = &quot;root&quot;;
+private static String password = &quot;root&quot;;
+
+static{
+    try {
+        //注册驱动
+        Class.forName(driver);
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+
+}
+
+/**
+</code></pre><p> 获得连接<br>      @return<br>      @throws SQLException<br>     /<br>    public static Connection getConnection() throws  SQLException{<br>        //获得连接<br>        Connection conn = DriverManager.getConnection(url, user, password);<br>        return conn;<br>    }</p>
+<pre><code>/**
+  释放资源
+  @param conn
+  @param st
+  @param rs
+ /
+public static void closeResource(Connection conn , Statement st , ResultSet rs){
+
+    if(rs != null){
+        try {
+            rs.close();
+        } catch (SQLException e) {
+        }
+    }
+
+    if(st != null){
+        try {
+            st.close();
+        } catch (SQLException e) {
+        }
+    }
+
+    if(conn != null){
+        try {
+            conn.close();
+        } catch (SQLException e) {
+        }
+    }
+
+}
+</code></pre><p>1.6JDBC增删改查操作</p>
+<p>1.6.1插入</p>
+<p>@Test<br>public void demo01(){<br>    //添加</p>
+<pre><code>Connection conn = null;
+Statement st = null;
+ResultSet rs = null;
+
+try {
+    //1 获得连接
+    conn = JdbcUtils.getConnection();
+
+    //操作
+    //1) 获得语句执行者
+    st = conn.createStatement();
+    //2) 执行sql语句
+    int r = st.executeUpdate(&quot;insert into category(cname) values(&apos;测试&apos;)&quot;);
+
+    //3) 处理结果
+    System.out.println(r);
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    //释放资源
+    JdbcUtils.closeResource(conn, st, rs);
+}
+</code></pre><p>}</p>
+<p>1.6.2修改</p>
+<p>@Test<br>public void demo02(){<br>    //修改<br>    Connection conn = null;<br>    Statement st = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    st = conn.createStatement();
+    int r = st.executeUpdate(&quot;update category set cname=&apos;测试2&apos; where cid = 4&quot;);
+    System.out.println(r);
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, st, rs);
+}
+</code></pre><p>}</p>
+<p>1.6.3删除</p>
+<p>@Test<br>public void demo03(){<br>    //删除<br>    Connection conn = null;<br>    Statement st = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    //操作
+    st = conn.createStatement();
+    int r = st.executeUpdate(&quot;delete from category where cid = 4&quot;);
+    System.out.println(r);
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, st, rs);
+}
+</code></pre><p>}</p>
+<p>1.6.4通过id查询详情</p>
+<p>@Test<br>public void demo04(){<br>    //通过id查询详情<br>    Connection conn = null;<br>    Statement st = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    //操作
+    st = conn.createStatement();
+    rs = st.executeQuery(&quot;select  from category where cid = 30&quot;);
+
+    if(rs.next()){
+        String cid = rs.getString(&quot;cid&quot;);
+        String cname = rs.getString(&quot;cname&quot;);
+        System.out.println(cid + &quot; @ &quot; + cname );
+    } else {
+        System.out.println(&quot;没有数据&quot;);
+    }
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, st, rs);
+}
+</code></pre><p>}</p>
+<p>1.6.5查询所有</p>
+<p>@Test<br>public void demo05(){<br>    //查询所有<br>    Connection conn = null;<br>    Statement st = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    //操作
+    st = conn.createStatement();
+    rs = st.executeQuery(&quot;select 
+</code></pre><p> from category”);</p>
+<pre><code>    while(rs.next()){
+        String cid = rs.getString(&quot;cid&quot;);
+        String cname = rs.getString(&quot;cname&quot;);
+        System.out.println(cid + &quot; @ &quot; + cname );
+    }
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, st, rs);
+}
+</code></pre><p>}</p>
+<p>1.7预处理对象</p>
+<p>1.7.1SQL注入问题</p>
+<p>SQL注入：用户输入的内容作为了SQL语句语法的一部分，改变了原有SQL真正的意义。<br>假设有登录案例SQL语句如下:<br>SELECT FROM 用户表 WHERE NAME = 用户输入的用户名 AND PASSWORD = 用户输的密码;<br>此时，当用户输入正确的账号与密码后，查询到了信息则让用户登录。但是当用户输入的账号为XXX 密码为：XXX’OR ‘a’=’a时，则真正执行的代码变为：<br>SELECT FROM 用户表 WHERE NAME = ‘XXX’ AND PASSWORD =’ XXX’OR ’a’=’a’;<br>此时，上述查询语句时永远可以查询出结果的。那么用户就直接登录成功了，显然我们不希望看到这样的结果，这便是SQL注入问题。<br>为此，我们使用PreparedStatement来解决对应的问题。</p>
+<p>1.7.2API详解：预处理对象<br>preparedStatement：预编译对象，是Statement对象的子类。<br>特点：<br>性能高<br>会把sql语句先编译<br>能过滤掉用户输入的关键字。</p>
+<p>PreparedStatement预处理对象，处理的每条sql语句中所有的实际参数，都必须使用占位符?替换。<br>String sql = “select from user where username = ? and password = ?”;<br>PreparedStatement使用，需要通过以下3步骤完成：</p>
+<pre><code>PreparedStatement预处理对象代码：
+</code></pre><p>#获得预处理对象，需要提供已经使用占位符处理后的SQL语句</p>
+<p>PreparedStatement psmt = conn.prepareStatement(sql)</p>
+<pre><code>设置实际参数
+void setXxx(int index, Xxx xx) 将指定参数设置指定类型的值
+参数1：index 实际参数序列号，从1开始。
+参数2：xxx 实际参数值，xxx表示具体的类型。
+例如：
+setString(2, &quot;1234&quot;) 把SQL语句中第2个位置的占位符?替换成实际参数 &quot;1234&quot;
+
+执行SQL语句:
+int executeUpdate(); --执行insert update delete语句.
+ResultSet executeQuery(); --执行select语句.
+boolean execute(); --执行select返回true 执行其他的语句返回false.
+</code></pre><p>1.7.3插入</p>
+<p>@Test<br>public void demo01(){<br>    //添加：向分类表中添加数据<br>    Connection conn = null;<br>    PreparedStatement psmt = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    //1 获得连接
+    conn = JdbcUtils.getConnection();
+    //2 处理sql语句
+    String sql = &quot;insert into category(cname) values(? )&quot;;
+    //3获得预处理对象
+    psmt = conn.prepareStatement(sql);
+    //4设置实际参数
+    psmt.setString(1,&quot;预处理&quot;);
+    //5执行
+    int r = psmt.executeUpdate();
+
+    System.out.println(r);
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    //6释放资源
+    JdbcUtils.closeResource(conn, psmt, rs);
+}
+}
+</code></pre><p>1.7.4更新</p>
+<p>@Test<br>public void demo02(){<br>    //修改<br>    Connection conn = null;<br>    PreparedStatement psmt = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    //1 sql语句
+    String sql = &quot;update category set cname = ? where cid = ?&quot;;
+    //2 获得预处理对象
+    psmt = conn.prepareStatement(sql);
+    //3设置实际参数
+    psmt.setString(1, &quot;测试数据&quot;);
+    psmt.setInt(2, 4);
+    //4执行
+    int r = psmt.executeUpdate();
+    System.out.println(r);
+
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, psmt, rs);
+}
+
+
+}
+</code></pre><p>1.7.5删除</p>
+<p>@Test<br>public void demo03(){<br>    //删除<br>    Connection conn = null;<br>    PreparedStatement psmt = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    //1 sql语句
+    String sql = &quot;delete from category where cid = ?&quot;;
+    //2 获得预处理对象
+    psmt = conn.prepareStatement(sql);
+    //3设置实际参数
+    psmt.setInt(1, 4);
+    //4执行
+    int r = psmt.executeUpdate();
+    System.out.println(r);
+
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, psmt, rs);
+}
+}
+</code></pre><p>1.7.6查询所有</p>
+<p>@Test<br>public void demo04(){<br>    //查询所有<br>    Connection conn = null;<br>    PreparedStatement psmt = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    String sql = &quot;select 
+</code></pre><p> from category”;<br>        psmt = conn.prepareStatement(sql);<br>        rs = psmt.executeQuery();<br>        while(rs.next()){<br>            String cname = rs.getString(“cname”);<br>            System.out.println(cname);<br>        }<br>    } catch (Exception e) {<br>        throw new RuntimeException(e);<br>    } finally{<br>        JdbcUtils.closeResource(conn, psmt, rs);<br>    }<br>    }</p>
+<p>1.7.7通过id查询详情</p>
+<p>@Test<br>public void demo05(){<br>    //通过id查询<br>    Connection conn = null;<br>    PreparedStatement psmt = null;<br>    ResultSet rs = null;</p>
+<pre><code>try {
+    conn = JdbcUtils.getConnection();
+
+    String sql = &quot;select * from category where cid = ?&quot;;
+    psmt = conn.prepareStatement(sql);
+    psmt.setInt(1, 2);
+    rs = psmt.executeQuery();
+    if(rs.next()){
+        System.out.println(&quot;查询到&quot;);
+    } else {
+        System.out.println(&quot;查询不到&quot;);
+    }
+
+
+} catch (Exception e) {
+    throw new RuntimeException(e);
+} finally{
+    JdbcUtils.closeResource(conn, psmt, rs);
+}
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/24/JDBC/" data-id="cjsj1n8e80004koot87y8tbi2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MySQL基础" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/12/MySQL基础/" class="article-date">
@@ -663,7 +1029,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/MySQL基础/" data-id="cjs1tghwo000a3cotbeb7sghp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/MySQL基础/" data-id="cjsj1n8fc000bkootk9lsdqpe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -700,7 +1066,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/03/JavaNIO/" data-id="cjs1tghxy000n3coto5pwsa7z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/03/JavaNIO/" data-id="cjsj1n8gh000okootqsqrnmp8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -913,7 +1279,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/30/认识docker/" data-id="cjs1tghvz00073cot176avl9w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/30/认识docker/" data-id="cjsj1n8fa000akoot69bih0aq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1104,7 +1470,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/Java面试/" data-id="cjs1tghvv00043cotb7a52tem" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/Java面试/" data-id="cjsj1n8ej0005kootpbubpguu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1213,7 +1579,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/24/数据库条件查询/" data-id="cjs1tghvn00033cotjuv7e8ct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/24/数据库条件查询/" data-id="cjsj1n8e70003koot8ihyg4cr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1658,7 +2024,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/操作数据库表/" data-id="cjs1tghvy00063cotii6zuwmt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/23/操作数据库表/" data-id="cjsj1n8f50007kootkllo0nqy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1695,7 +2061,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/面向对象接口多态/" data-id="cjs1tghxm000h3cot5t0rg2wq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/面向对象接口多态/" data-id="cjsj1n8fz000hkooty6kp0th2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1731,7 +2097,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/多表查询/" data-id="cjs1tghws000c3cot72o43k9j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/多表查询/" data-id="cjsj1n8fm000ekoot409q4jvf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1768,43 +2134,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/SQL语句查询/" data-id="cjs1tghwx000f3cotg2viwriu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据库篇多表操作" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/20/数据库篇多表操作/" class="article-date">
-  <time datetime="2019-01-19T16:42:04.000Z" itemprop="datePublished">2019-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/数据库篇多表操作/">数据库篇多表操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251) none repeat scroll 0% 0%; overflow: auto; overflow-wrap: normal; word-break: normal;"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px;">微信公众号：<strong style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; font-weight: bold;"><a href="#jump_10" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">菜鸟永恒</a></strong></p><br></blockquote><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第1章    多表操作</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">实际开发中，一个项目通常需要很多张表才能完成。例如：一个商城项目就需要分类表(category)、商品表(products)、订单表(orders)等多张表。且这些表的数据之间存在一定的关系，接下来我们将在单表的基础上，一起学习多表方面的知识。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FgDK7YvGgNQaLgguhcxHw_BPEvaH" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fs_UqnLm5gMUp4-aD-UpO5aDOLtX" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.1    表与表之间的关系<br>有3类表关系：一对多（多对一）、多对多、一对一（了解）<br>    一对多关系：<br>    常见实例：学生和考试成绩(画图),客户和订单，分类和商品，部门和员工.<br>    一对多建表原则：在从表(多方)创建一个字段，字段作为外键指向主表(一方)的主键. <br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Flcn04VogD8Y4MmKZMyTjYSmFOwh" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    多对多关系：<br>    常见实例：学生和教师,商品和订单(画图),学生和课程、用户和角色<br>    多对多关系建表原则：需要创建第三张表,中间表中至少两个字段，这两个字段分别作为外键指向各自一方的主键.<br> <figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FpugUNhCOPBacvVJ2Cc8c4L7x1WH" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    一对一关系：(了解)<br>    在实际的开发中应用不多,比如QQ号码,和QQ用户信息<br>    因为一对一可以创建成一张表.<br>    两种建表原则：<br>    外键唯一：主表的主键和从表的外键（唯一），形成主外键关系，外键唯一unique。<br>    外键是主键：主表的主键和从表的主键，形成主外键关系。<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"></p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.2    外键约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">现在我们有两张表“分类表”和“商品表”，为了表明商品属于哪个分类，通常情况下，我们将在商品表上添加一列，用于存放分类cid的信息，此列称为：外键<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FnzAvKIRII4ig9OShYhfw3wyMhui" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;">此时“分类表category”称为：主表，“cid”我们称为主键。“商品表products”称为：从表，category_id称为外键。我们通过主表的主键和从表的外键来描述主外键关系，呈现就是一对多关系。<br>外键特点：<br></code></pre><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    从表外键的值是对主表主键的引用。<br>    从表外键类型，必须与主表主键类型一致。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    声明外键约束  <br>语法：alter table 从表 add [constraint] [外键名称] foreign key (从表外键字段名) references 主表 (主表的主键);<br>[外键名称] 用于删除外键约束的，一般建议“_fk”结尾<br>    alter table 从表 drop foreign key 外键名称<br>    使用外键目的：<br>    保证数据完整性</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3    一对多操作<br>1.3.1    分析<br></p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhNERQGILgU0HMCuAmnuXaYhJXMR" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    category分类表，为一方，也就是主表，必须提供主键cid<br>    products商品表，为多方，也就是从表，必须提供外键category_id</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3.2    实现：分类和商品</p><br><h3 id="h" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">创建分类表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table category(<br>  cid int(32) PRIMARY KEY ,<br>  cname varchar(100)        #分类名称<br>);</p><br><h1 id="h-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">商品表</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE TABLE products (<br>   pid int PRIMARY KEY  ,<br>   pname VARCHAR(40) ,<br>   price DOUBLE ,<br>   category_id int<br>);</p><br><h1 id="h-2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">添加约束</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table products add constraint product_fk foreign key (category_id) references category (cid);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3.3    操作</p><br><h1 id="h1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 向分类表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO category (cid ,cname) VALUES(1,’服装’);</p><br><h1 id="h2null" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 向商品表添加普通数据,没有外键数据，默认为null</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid,pname) VALUES(1,’商品名称’);</p><br><h1 id="h3" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3 向商品表添加普通数据，含有外键信息(数据存放在)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid ,pname ,category_id) VALUES(2,’商品名称2’, 1);</p><br><h1 id="h4" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4 向商品表添加普通数据，含有外键信息(数据不存在) – 不能异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid ,pname ,category_id) VALUES(3,’商品名称2’,9);</p><br><h1 id="h5" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5 删除指定分类(分类被商品使用) – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM category WHERE cid = 1;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4    多对多<br>1.4.1    分析<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FqOioK1O7AvrqV4Usq3L5Puk7FDq" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br>    商品和订单多对多关系，将拆分成两个一对多。<br>    products商品表，为其中一个一对多的主表，需要提供主键pid<br>    orders 订单表，为另一个一对多的主表，需要提供主键oid<br>    orderitem中间表，为另外添加的第三张表，需要提供两个外键oid和pid<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"></p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4.2    实现：订单和商品</p><br><h3 id="h-3" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">商品表[已存在]</span></h3><br><h3 id="h-4" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">订单表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table orders(<br>  oid int PRIMARY KEY ,<br>  totalprice double     #总计<br>);</p><br><h3 id="h-5" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">订单项表</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">create table orderitem(<br>  oid int,– 订单id<br>  pid int(50)– 商品id<br>);</p><br><h3 id="h-6" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">—- 订单表和订单项表的主外键关系</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table orderitem add constraint orderitem_orders_fk foreign key (oid) references orders(oid);</p><br><h3 id="h-7" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">—- 商品表和订单项表的主外键关系</span></h3><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">alter table orderitem add constraint orderitem_product_fk foreign key (pid) references products(pid);</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4.3    操作</p><br><h1 id="h1-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 向商品表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO products (pid,pname) VALUES(3,’商品名称’);</p><br><h1 id="h2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 向订单表中添加数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orders (oid ,totalprice) VALUES(1,998);<br>INSERT INTO orders (oid ,totalprice) VALUES(2,100);</p><br><h1 id="h3-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3向中间表添加数据(数据存在)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orderitem(pid,oid) VALUES(1, 1);<br>INSERT INTO orderitem(pid,oid) VALUES(1, 2);<br>INSERT INTO orderitem(pid,oid) VALUES(2,2);</p><br><h1 id="h4-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4删除中间表的数据</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM orderitem WHERE pid=2  AND oid = 2;</p><br><h1 id="h5-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5向中间表添加数据(数据不存在) – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">INSERT INTO orderitem(pid,oid) VALUES(2, 3);</p><br><h1 id="h6" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">6删除商品表的数据 – 执行异常</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">DELETE FROM products WHERE pid = 1;</p></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/数据库篇多表操作/" data-id="cjs1tghwu000d3cotpq5gqo1s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/SQL语句查询/" data-id="cjsj1n8fd000ckootux75tvrw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1850,6 +2180,10 @@ upass VARCHAR(30)
       <ul>
         
           <li>
+            <a href="/2019/02/24/JDBC/">JDBC</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/12/MySQL基础/">MySQL基础</a>
           </li>
         
@@ -1863,10 +2197,6 @@ upass VARCHAR(30)
         
           <li>
             <a href="/2019/01/26/Java面试/">Java面试</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/24/数据库条件查询/">数据库条件查询</a>
           </li>
         
       </ul>
