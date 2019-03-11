@@ -62,6 +62,344 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Nginx快速上手" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/Nginx快速上手/" class="article-date">
+  <time datetime="2019-03-11T16:52:44.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/12/Nginx快速上手/">Nginx快速上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Nginx快速上手</p>
+<p>根据实际的应用需要，学习要用到的Nginx的知识，以快速上手、理解并掌握</p>
+<p>Nginx</p>
+<p>一：Nginx简介</p>
+<p>包括：Nginx是什么、能干什么、特点</p>
+<p>二：Nginx安装和基本使用</p>
+<p>包括：源码安装、安装配置选项、基本使用</p>
+<p>三：Nginx基本配置</p>
+<p>包括：结合示例的配置文件，熟悉Nginx的基本配置</p>
+<p>四：学习核心模块、日志模块和事件模块的常用指令</p>
+<p>五：学习Http模块的常用配置和指令</p>
+<p>Nginx简介</p>
+<p>Nginx是什么</p>
+<p>Nginx是一款轻量级的Web服务器，也是一款轻量级的反向代理服务器。</p>
+<p>Nginx能干什么</p>
+<p>Nginx能干的事情很多，这里简要罗列一些：</p>
+<p>1：直接支持Rails和PHP的程序</p>
+<p>2：作为HTTP反向代理服务器</p>
+<p>3：作为负载均衡服务器</p>
+<p>4：作为邮件代理服务器</p>
+<p>5：帮助实现前端动静分离</p>
+<p>……</p>
+<p>Nginx特点</p>
+<p>高稳定、高性能、资源占用少、功能丰富、模块化结构、支持热部署</p>
+<p>Nginx安装</p>
+<p>源码安装</p>
+<p>演示环境：CentOS6.5</p>
+<p>1：需要gcc，系统自带了，没有的话，需要先安装</p>
+<p>2：需要pcre，安装的命令示例如下： yum install pcre*</p>
+<p>3：需要zlib，安装的命令示例如下：yum install zlib zlib-devel</p>
+<p>4：如果需要支持ssl的话，安装OpenSSL，安装的命令示例如下：</p>
+<p>yum install openssl openssl-devel</p>
+<p>5：上<a href="http://nginx.org/去下载源码包，然后进行解压安装，示例如下：" target="_blank" rel="noopener">http://nginx.org/去下载源码包，然后进行解压安装，示例如下：</a></p>
+<p>（1）先解压源码包，然后进入到这个包里面</p>
+<p>（2）安装命令示例如下：</p>
+<p>第一步：./configure –prefix=/usr/common/nginx –withhttp_</p>
+<p>stub_status_module –with-http_ssl_module</p>
+<p>如果提示确少啥，就加上相应的选项，比如缺少pcre的话，就加上</p>
+<p>–with-pcre=/usr/common/temp/pcre-8.34 （当然我们这里是不缺东西的）</p>
+<p>第二步：配置后就依次make ， make install</p>
+<p>常见的Nginx安装配置选项-1</p>
+<p>编译参数可能会根据版本的不同进行变化，./configure –help查看编译参数列表，常见的选项如下：</p>
+<p> –prefix=<path> - 安装路径，如果没有指定，默认为/usr/local/nginx。</path></p>
+<p> –sbin-path=<path> - nginx可执行命令的文件，如果没有指定，默认为<prefix>/sbin/nginx。</prefix></path></p>
+<p> –conf-path=<path> - 在没有使用-c参数指定的情况下nginx.conf的默认位置，如果没有指定，默认</path></p>
+<p>为<prefix>/conf/nginx.conf。</prefix></p>
+<p> –pid-path=<path> - nginx.pid的路径，如果没有在nginx.conf中通过“pid”指令指定，默认为</path></p>
+<p><prefix>/logs/nginx.pid。</prefix></p>
+<p> –lock-path=<path> - nginx.lock文件路径，如果没有指定，默认为<prefix>/logs/nginx.lock。</prefix></path></p>
+<p> –error-log-path=<path> - 当没有在nginx.conf中使用“error_log”指令指定时的错误日志位置，</path></p>
+<p>如果没有指定，默认为<prefix>/logs/error.log。</prefix></p>
+<p> –http-log-path=<path> - 当没有在nginx.conf中使用“access_log”指令指定时的访问日志位置，</path></p>
+<p>如果没有指定，默认为<prefix>/logs/access.log。</prefix></p>
+<p> –user=<user> - 当没有在nginx.conf中使用“user”指令指定时nginx运行的用户，如果没有指定，</user></p>
+<p>默认为“nobody”。</p>
+<p> –group=<group> - 当没有在nginx.conf中使用“user”指令指定时nginx运行的组，如果没有指定，</group></p>
+<p>默认为“nobody”。</p>
+<p> –builddir=DIR - 设置构建目录。</p>
+<p> –with-rtsig_module - 启用rtsig模块。</p>
+<p>常见的Nginx安装配置选项-2</p>
+<p>–with-select_module –without-select_module - 如果在configure的时候没有发现kqueue, epoll,</p>
+<p>rtsig或/dev/poll其中之一，select模块始终为启用状态。</p>
+<p> –with-poll_module –without-poll_module - 如果在configure的时候没有发现kqueue, epoll,</p>
+<p>rtsig或/dev/poll其中之一，poll模块始终为启用状态。</p>
+<p> –with-http_ssl_module - 启用ngx_http_ssl_module，启用SSL支持并且能够处理HTTPS请求。需要</p>
+<p>OpenSSL，在Debian系统中，对应的包为libssl-dev。</p>
+<p> –with-http_realip_module - 启用ngx_http_realip_module</p>
+<p> –with-http_addition_module - 启用ngx_http_addition_module</p>
+<p> –with-http_sub_module - 启用ngx_http_sub_module</p>
+<p> –with-http_dav_module - 启用ngx_http_dav_module</p>
+<p> –with-http_flv_module - 启用ngx_http_flv_module</p>
+<p> –with-http_stub_status_module - 启用”server status”（服务状态）页</p>
+<p> –without-http_charset_module - 禁用ngx_http_charset_module</p>
+<p> –without-http_gzip_module - 禁用ngx_http_gzip_module，如果启用，需要zlib包。</p>
+<p> –without-http_ssi_module - 禁用ngx_http_ssi_module</p>
+<p> –without-http_userid_module - 禁用ngx_http_userid_module</p>
+<p> –without-http_access_module - 禁用ngx_http_access_module</p>
+<p> –without-http_auth_basic_module - 禁用ngx_http_auth_basic_module</p>
+<p>常见的Nginx安装配置选项-3</p>
+<p>–without-http_autoindex_module - 禁用ngx_http_autoindex_module</p>
+<p> –without-http_geo_module - 禁用ngx_http_geo_module</p>
+<p> –without-http_map_module - 禁用ngx_http_map_module</p>
+<p> –without-http_referer_module - 禁用ngx_http_referer_module</p>
+<p> –without-http_rewrite_module - 禁用ngx_http_rewrite_module。如果启用，需要PCRE包。</p>
+<p> –without-http_proxy_module - 禁用ngx_http_proxy_module</p>
+<p> –without-http_fastcgi_module - 禁用ngx_http_fastcgi_module</p>
+<p> –without-http_memcached_module - 禁用ngx_http_memcached_module</p>
+<p> –without-http_limit_zone_module - 禁用ngx_http_limit_zone_module</p>
+<p> –without-http_empty_gif_module - 禁用ngx_http_empty_gif_module</p>
+<p> –without-http_browser_module - 禁用ngx_http_browser_module</p>
+<p> –without-http_upstream_ip_hash_module - 禁用ngx_http_upstream_ip_hash_module</p>
+<p> –with-http_perl_module - 启用ngx_http_perl_module</p>
+<p> –with-perl_modules_path=PATH - 为perl模块设置路径</p>
+<p> –with-perl=PATH - 为perl库设置路径</p>
+<p> –http-client-body-temp-path=PATH - 为http连接的请求实体临时文件设置路径，如果没有指定，默认为<prefix>/client_body_temp</prefix></p>
+<p>常见的Nginx安装配置选项-4</p>
+<p>–http-proxy-temp-path=PATH - 为http代理临时文件设置路径，如果没有指定，默认为<prefix>/proxy_temp</prefix></p>
+<p> –http-fastcgi-temp-path=PATH - 为http fastcgi临时文件设置路径，如果没有指定，默认为<prefix>/fastcgi_temp</prefix></p>
+<p> –without-http - 禁用HTTP服务</p>
+<p> –with-mail - 启用IMAP4/POP3/SMTP代理模块</p>
+<p> –with-mail_ssl_module - 启用ngx_mail_ssl_module</p>
+<p> –with-cc=PATH - 设置C编译器路径</p>
+<p> –with-cpp=PATH - 设置C预处理器路径</p>
+<p> –with-cc-opt=OPTIONS - 变量CFLAGS中附加的参数，用于FreeBSD中的PCRE库，同样需要指定–withcc-</p>
+<p>opt=”-I /usr/local/include”，如果我们使用select()函数则需要同时增加文件描述符数量，可</p>
+<p>以通过–with-cc-opt=”-D FD_SETSIZE=2048”指定。</p>
+<p> –with-ld-opt=OPTIONS - 通过连接器的附加参数，用于FreeBSD中的PCRE库，同样需要指定–withld-</p>
+<p>opt=”-L /usr/local/lib”。</p>
+<p> –with-cpu-opt=CPU - 指定编译的CPU，可用的值为: pentium, pentiumpro, pentium3, pentium4,</p>
+<p>athlon, opteron, amd64, sparc32, sparc64, ppc64</p>
+<p> –without-pcre - 禁用PCRE库文件，同时将禁用HTTP rewrite 模块，如果要在”location”指令中使</p>
+<p>用正则表达式，同样需要PCRE库。</p>
+<p>常见的Nginx安装配置选项-5</p>
+<p> –with-pcre=DIR - 设置PCRE库源文件路径。</p>
+<p> –with-pcre-opt=OPTIONS - 在编译时为PCRE设置附加参数。</p>
+<p> –with-md5=DIR - 设置md5库源文件路径。</p>
+<p> –with-md5-opt=OPTIONS - 在编译时为md5设置附加参数。</p>
+<p> –with-md5-asm - 使用md5汇编源。</p>
+<p> –with-sha1=DIR - 设置sha1库源文件路径。</p>
+<p> –with-sha1-opt=OPTIONS - 在编译时为sha1设置附加参数。</p>
+<p> –with-sha1-asm - 使用sha1汇编源。</p>
+<p> –with-zlib=DIR - 设置zlib库源文件路径。</p>
+<p> –with-zlib-opt=OPTIONS - 在编译时为zlib设置附加参数。</p>
+<p> –with-zlib-asm=CPU - 为指定的CPU使用zlib汇编源进行优化，可用值为: pentium, pentiumpro。</p>
+<p> –with-openssl=DIR - 设置openssl库源文件路径。</p>
+<p> –with-openssl-opt=OPTIONS - 在编译时为openssl设置附加参数。</p>
+<p> –with-debug - 启用debug记录。</p>
+<p> –add-module=PATH - 增加一个在PATH中的第三方模块。</p>
+<p>Nginx的基本运行</p>
+<p> 测试配置文件：</p>
+<p>安装路径下的/nginx/sbin/nginx -t</p>
+<p> 启动：</p>
+<p>安装路径下的/nginx/sbin/nginx</p>
+<p> 停止</p>
+<p>安装路径下的/nginx/sbin/nginx -s stop</p>
+<p>或者是： nginx -s quit</p>
+<p> 重启</p>
+<p>安装路径下的/nginx/sbin/nginx -s reload</p>
+<p> 查看进程</p>
+<p>ps -ef |grep nginx</p>
+<p>安装过后，如果从外面访问不了，多半是被防火墙挡住了，可以关闭掉防火墙：</p>
+<p>/sbin/service iptables stop</p>
+<p>Nginx的基本配置-1</p>
+<p> 默认启动Nginx时，使用的配置文件是： 安装路径/conf/nginx.conf 文件</p>
+<p>可以在启动nginx的时候，通过-c来指定要读取的配置文件</p>
+<p> 常见的配置文件有如下几个：</p>
+<p>nginx.conf：应用程序的基本配置文件</p>
+<p>mime.types：MIME类型关联的扩展文件</p>
+<p>fastcgi.conf：与fastcgi相关的配置</p>
+<p>proxy.conf：与proxy相关的配置</p>
+<p>sites.conf：配置Nginx提供的网站，包括虚拟主机</p>
+<p> Nginx的进程结构</p>
+<p>启动Nginx的时候，会启动一个Master进程，这个进程不处理任何客户端的</p>
+<p>请求，主要用来产生worker进程，一个worker进程用来处理一个request。</p>
+<p> Nginx模块分为：核心模块、事件模块、标准Http模块、可选Http模块、邮件模</p>
+<p>块、第三方模块和补丁等</p>
+<p>Nginx的基本配置-2</p>
+<p> Nginx基本模块：所谓基本模块，指的是Nginx默认的功能模块，它们提供的指</p>
+<p>令，允许你使用定义Nginx基本功能的变量，在编译的时候不能被禁用，包括：</p>
+<p>核心模块：基本功能和指令，如进程管理和安全</p>
+<p>事件模块：在Nginx内配置网络使用的能力</p>
+<p>配置模块：提供包含机制</p>
+<p> 常见的核心模块指令，大部分都是放置在配置文件的顶部</p>
+<p>具体的指令，请参看nginx的官方文档，非常详细，参见：</p>
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/ngx_core_module.html</a></p>
+<p>还有下面这个网站，也是非常不错的：</p>
+<p><a href="http://www.howtocn.org/nginx:directiveindex" target="_blank" rel="noopener">http://www.howtocn.org/nginx:directiveindex</a></p>
+<p> 常见的events模块指令，大部分都是放置在配置文件的顶部</p>
+<p>具体的指令，在上面那个文档里面，命令的context为events的就是events</p>
+<p>模块指令，只能在events里面使用</p>
+<p>Nginx常用的核心模块指令</p>
+<p> 核心模块指令，重点看看：error_log、include、pid、user、worker_cpu_affinity、</p>
+<p>worker_processes</p>
+<p> error_log</p>
+<p>日志有6个级别：debug|info|notice|warn|error|crit</p>
+<p>Nginx支持将不同的虚拟主机的日志记录在不同的地方，如下示例：</p>
+<p>http{</p>
+<p>error_log logs/http_error.log error;</p>
+<p>server{</p>
+<p>server_name one;</p>
+<p>access_log logs/one_access.log;</p>
+<p>error_log logs/one_error.log error;</p>
+<p>}</p>
+<p>server{</p>
+<p>server_name two;</p>
+<p>access_log logs/two_access.log;</p>
+<p>error_log logs/two_error.log error;</p>
+<p>}</p>
+<p>}</p>
+<p>注意：error_log off不是禁用日志，而是创建一个名为off的日志，要禁用日志，可以这么写：error_log</p>
+<p>/dev/null crit;</p>
+<p>Nginx常用的日志模块、事件模块指令</p>
+<p> 日志模块指令，几个都看看</p>
+<p> 事件模块指令，重点看看：use和worker_connections</p>
+<p>Nginx的HTTP基本配置</p>
+<p> Nginx的HTTP配置主要包括三个区块，结构如下：</p>
+<p>http { //这个是协议级别</p>
+<p>include mime.types;</p>
+<p>default_type application/octet-stream;</p>
+<p>keepalive_timeout 65;</p>
+<p>gzip on;</p>
+<p>server { //这个是服务器级别</p>
+<p>listen 80;</p>
+<p>server_name localhost;</p>
+<p>location / { //这个是请求级别</p>
+<p>root html;</p>
+<p>index index.html index.htm;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p> Nginx的HTTP核心模块，包括大量的指令和变量，大都很重要，具体参见：</p>
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/http/ngx_http_core_module.html</a></p>
+<p>Location区段-1</p>
+<p> Location区段，通过指定模式来与客户端请求的URI相匹配，基本语法如下：</p>
+<p>location [=|~|~*|^~|@] pattern{……}</p>
+<p>1：没有修饰符表示：必须以指定模式开始，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location /abc {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-2</p>
+<p>2：= 表示：必须与指定的模式精确匹配，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location = /abc {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-3</p>
+<p>3：~ 表示：指定的正则表达式要区分大小写，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location ~ ^/abc$ {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/ABC" target="_blank" rel="noopener">http://sishuok.com/ABC</a></p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-4</p>
+<p>4：~* 表示：指定的正则表达式不区分大小写，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location ~* ^/abc$ {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/ABC" target="_blank" rel="noopener">http://sishuok.com/ABC</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-5</p>
+<p>5：^~ 类似于无修饰符的行为，也是以指定模式开始，不同的是，如果模式匹配，</p>
+<p>那么就停止搜索其他模式了。</p>
+<p>6：@ ：定义命名location区段，这些区段客户段不能访问，只可以由内部产生的请</p>
+<p>求来访问，如try_files或error_page等</p>
+<p> 查找顺序和优先级</p>
+<p>1：带有“=“的精确匹配优先</p>
+<p>2：没有修饰符的精确匹配</p>
+<p>3：正则表达式按照他们在配置文件中定义的顺序</p>
+<p>4：带有“^~”修饰符的，开头匹配</p>
+<p>5：带有“~” 或“~*” 修饰符的，如果正则表达式与URI匹配</p>
+<p>6：没有修饰符的，如果指定字符串与URI开头匹配</p>
+<p>Location区段匹配示例</p>
+<p>location = / {</p>
+<h1 id="只匹配-的查询"><a href="#只匹配-的查询" class="headerlink" title="只匹配/ 的查询."></a>只匹配/ 的查询.</h1><p>[ configuration A ]</p>
+<p>}</p>
+<p>location / {</p>
+<h1 id="匹配任何以-开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。"><a href="#匹配任何以-开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。" class="headerlink" title="匹配任何以/ 开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。"></a>匹配任何以/ 开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。</h1><p>[ configuration B ]</p>
+<p>}</p>
+<p>location ^~ /images/ {</p>
+<h1 id="匹配任何以-images-开始的查询并且停止搜索，不检查正则表达式。"><a href="#匹配任何以-images-开始的查询并且停止搜索，不检查正则表达式。" class="headerlink" title="匹配任何以/images/ 开始的查询并且停止搜索，不检查正则表达式。"></a>匹配任何以/images/ 开始的查询并且停止搜索，不检查正则表达式。</h1><p>[ configuration C ]</p>
+<p>}</p>
+<p>location ~* .(gif|jpg|jpeg)$ {</p>
+<h1 id="匹配任何以gif-jpg-or-jpeg结尾的文件，但是所有-images-目录的请求将在Configuration-C中处"><a href="#匹配任何以gif-jpg-or-jpeg结尾的文件，但是所有-images-目录的请求将在Configuration-C中处" class="headerlink" title="匹配任何以gif, jpg, or jpeg结尾的文件，但是所有/images/ 目录的请求将在Configuration C中处"></a>匹配任何以gif, jpg, or jpeg结尾的文件，但是所有/images/ 目录的请求将在Configuration C中处</h1><p>理。</p>
+<p>[ configuration D ]</p>
+<p>}</p>
+<p>各请求的处理如下例：</p>
+<p>■/ → configuration A</p>
+<p>■/documents/document.html → configuration B</p>
+<p>■/images/1.gif → configuration C</p>
+<p>■/documents/1.jpg → configuration D</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/Nginx快速上手/" data-id="cjt4l7ygx0005x8ote6vsabso" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JDBC" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/24/JDBC/" class="article-date">
@@ -418,7 +756,7 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/24/JDBC/" data-id="cjsj1n8e80004koot87y8tbi2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/JDBC/" data-id="cjt4l7ygw0004x8oto8bw8sh2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1029,7 +1367,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/12/MySQL基础/" data-id="cjsj1n8fc000bkootk9lsdqpe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/MySQL基础/" data-id="cjt4l7yhz000cx8ot9f8ldctv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1066,7 +1404,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/03/JavaNIO/" data-id="cjsj1n8gh000okootqsqrnmp8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/03/JavaNIO/" data-id="cjt4l7yjg000ox8otlvjokolt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1279,7 +1617,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/30/认识docker/" data-id="cjsj1n8fa000akoot69bih0aq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/30/认识docker/" data-id="cjt4l7yh10007x8otu1jlp1vs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1470,7 +1808,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/Java面试/" data-id="cjsj1n8ej0005kootpbubpguu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/Java面试/" data-id="cjt4l7ygz0006x8otgargk7xc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1579,7 +1917,7 @@ leave类似于java中的break语句，跳出所在循环！！！
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/24/数据库条件查询/" data-id="cjsj1n8e70003koot8ihyg4cr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/24/数据库条件查询/" data-id="cjt4l7ygh0003x8ot2nt19pmw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2024,7 +2362,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/操作数据库表/" data-id="cjsj1n8f50007kootkllo0nqy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/23/操作数据库表/" data-id="cjt4l7yhs000ax8ots1jmtyut" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2061,7 +2399,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/面向对象接口多态/" data-id="cjsj1n8fz000hkooty6kp0th2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/面向对象接口多态/" data-id="cjt4l7yj6000kx8otva71ruku" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2097,44 +2435,7 @@ upass VARCHAR(30)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/多表查询/" data-id="cjsj1n8fm000ekoot409q4jvf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SQL语句查询" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/21/SQL语句查询/" class="article-date">
-  <time datetime="2019-01-20T16:27:06.000Z" itemprop="datePublished">2019-01-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/21/SQL语句查询/"> SQL语句查询</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0px; color: rgb(129, 145, 152); border-left: 6px solid rgb(220, 230, 240); background: rgb(242, 247, 251) none repeat scroll 0% 0%; overflow: auto; overflow-wrap: normal; word-break: normal;"><br>  <p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 0px;">微信公众号：<strong style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; font-weight: bold;"><a href="#jump_10" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">菜鸟永恒</a></strong></p><br></blockquote><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第1章    SQL语句查询</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.1    排序</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">通过order  by语句，可以将查询出的结果进行排序。放置在select语句的最后。<br>格式:<br>SELECT <em> FROM 表名 ORDER BY 排序字段ASC|DESC;<br>    ASC 升序 (默认)<br>    DESC 降序</em></p><br><h1 id="h1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1.查询所有商品信息,使用价格排序(降序)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT  FROM product ORDER BY price DESC;</p><br><h1 id="h2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2.在价格排序(降序)的基础上，以分类排序(降序)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT <em> FROM product ORDER BY price DESC,category_id DESC;</em></p><br><h1 id="h3" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3.显示商品的价格(去重复)，并排序(降序)</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT DISTINCT price FROM product ORDER BY price DESC;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.2    聚合</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">之前我们做的查询都是横向查询，它们都是根据条件一行一行的进行判断，而使用聚合函数查询是纵向查询，他是对查询后的结果的列进行计算，然后返回一个单一的值；另外聚合函数会忽略空值。<br>今天我们学习如下五个聚合函数：<br>    count：统计指定列不为NULL的记录行数；<br>    sum：计算指定列的数值和，如果指定列类型不是数值类型，那么计算结果为0；<br>    max：计算指定列的最大值，如果指定列是字符串类型，那么使用字符串排序运算；<br>    min：计算指定列的最小值，如果指定列是字符串类型，那么使用字符串排序运算；<br>    avg：计算指定列的平均值，如果指定列类型不是数值类型，那么计算结果为0；</p><br><h1 id="h1-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 查询商品的总条数</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT COUNT() FROM product; </p><br><h1 id="h2200" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 查询价格大于200商品的总条数</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT COUNT(<em>) FROM product WHERE price &gt; 200;</em></p><br><h1 id="h3c001" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">3 查询分类为’c001’的所有商品价格的总和</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT SUM(price) FROM product WHERE category_id = ‘c001’;</p><br><h1 id="h4c002" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">4 查询分类为’c002’所有商品的平均价格</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT AVG(price) FROM product WHERE category_id = ‘c002’;</p><br><h1 id="h5" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">5 查询商品的最大价格和最小价格</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT MAX(price),MIN(price) FROM product;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.3    分组</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">分组查询是指使用group by字句对查询信息进行分组。<br>    格式：<br>SELECT 字段1,字段2… FROM 表名GROUP BY分组字段 HAVING 分组条件;<br>分组操作中的having子语句，是用于在分组后对数据进行过滤的，作用类似于where条件。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    having与where的区别:<br>    having是在分组后对数据进行过滤.<br>where是在分组前对数据进行过滤<br>    having后面可以使用统计函数过滤数据<br>where后面不可以使用统计函数。</p><br><h1 id="h0" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">0 统计所有商品的个数</span></h1><br><h1 id="h1-2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">1 统计各个分类商品的个数</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT category_id ,COUNT() FROM product GROUP BY category_id ;</p><br><h1 id="h21" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.6em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">2 统计各个分类商品的个数,且只显示个数大于1的信息</span></h1><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">SELECT category_id ,COUNT(<em style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; font-style: italic;">) FROM product GROUP BY category_id HAVING COUNT(</em>) &gt; 1;</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">1.4    分页查询</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">分页查询在项目开发中常见，由于数据量很大，显示屏长度有限，因此对数据需要采取分页显示方式。例如数据共有30条，每页显示5条，第一页显示1-5条，第二页显示6-10条。<br>    格式：<br> SELECT 字段1，字段2… FROM 表明 LIMIT M,N<br> M: 整数，表示从第几条索引开始，计算方式 （当前页-1）*每页显示条数<br> N: 整数，表示查询多少条数据<br> SELECT 字段1，字段2… FROM 表明 LIMIT 0,5<br> SELECT 字段1，字段2… FROM 表明 LIMIT 5,5</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第2章    SQL备份与恢复</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2.1    SQL备份</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">选中数据库，右键”备份/导出”，指定导出路径，保存成.sql文件即可。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/FhLJgwjWEXbMaJaKYYq_Jg3qHz7b" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">2.2    SQL恢复</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">数据库列表区域右键“从SQL转储文件导入数据库”，指定要执行的SQL文件，执行即可。<br> </p><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="http://pl6hg2x3d.bkt.clouddn.com/Fo3T-5VEiA0oVB5XQjg493yIatxl" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">第3章    SQL约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.1    数据完整性</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">添加数据完整性=添加表约束<br>   分类：实体完整性，域完整性，引用完整性<br>      实体完整性： 对数据行的约束，比如:主键约束，唯一约束<br>      域完整性：   对数据列的约束，比如:该列的数据类型, 默认约束，非空约束<br>      引用完整性： 外键约束(多表的关系)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2    主键约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">PRIMARY KEY 约束唯一标识数据库表中的每条记录,每条记录中被主键约束 约束的字段不能相同。<br>主键必须是唯一的值。<br>主键列不能是 NULL 值。<br>每个表都应该有且只能有一个主键。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.1    添加主键约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    方式一：创建表时，在字段描述处，声明指定字段为主键：<br>CREATE TABLE Persons<br>(<br>Id_P int PRIMARY KEY,<br>LastName varchar(255),<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)<br>    方式二：创建表时，在constraint约束区域，声明指定字段为主键：<br>    格式：[constraint 名称] primary key (字段列表)<br>    关键字constraint可以省略，如果需要为主键命名，constraint不能省略，主键名称一般没用。<br>    字段列表需要使用小括号括住，如果有多字段需要使用逗号分隔。声明两个以上字段为主键，我们称为联合主键。<br>CREATE TABLE Persons<br>(<br>FirstName varchar(255),<br>LastName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br>CONSTRAINT pk_PersonID PRIMARY KEY (FirstName,LastName)<br>)<br>或<br>CREATE TABLE Persons<br>(<br>FirstName varchar(255),<br>LastName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br>PRIMARY KEY (FirstName)<br>)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    方式三：创建表之后，通过修改表结构，声明指定字段为主键：<br>ALTER TABLE Persons ADD [CONSTRAINT 名称] PRIMARY KEY (字段列表)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">CREATE TABLE Persons<br>(<br>FirstName varchar(255),<br>LastName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)<br>ALTER TABLE Persons ADD PRIMARY KEY (FirstName)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.2.2    删除主键约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">如需撤销 PRIMARY KEY 约束，请使用下面的 SQL：<br>ALTER TABLE Persons DROP PRIMARY KEY</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.3    自动增长列</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">我们通常希望在每次插入新记录时，数据库自动生成字段的值。<br>我们可以在表中使用 auto_increment（自动增长列）关键字，自动增长列类型必须是整形，自动增长列必须为键(一般是主键)。<br>    下列 SQL 语句把 “Persons” 表中的 “P_Id” 列定义为 auto-increment 主键<br>CREATE TABLE Persons<br>(<br>P_Id int PRIMARY KEY AUTO_INCREMENT,<br>LastName varchar(255),<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)<br>    向persons添加数据时，可以不为P_Id字段设置值，也可以设置成null，数据库将自动维护主键值：<br>INSERT INTO Persons (FirstName,LastName) VALUES (‘Bill’,’Gates’)<br>INSERT INTO Persons (P_Id,FirstName,LastName) VALUES (NULL,’Bill’,’Gates’)<br>    面试：delete和truncate的区别<br>    Delete删除表中的数据，但不重置auto-increment记录数。<br>    Truncate删除表中的数据，auto-increment记录数将重置。Truncate其实先删除表然后再创建表。<br>    扩展：默认地，AUTO_INCREMENT 的开始值是 1，如果希望修改起始值，请使用下列 SQL 语法：   <br>ALTER TABLE Persons AUTO_INCREMENT=100</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.4    非空约束NOT NULL </p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">NOT NULL 约束强制列不接受 NULL 值。<br>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。<br>    方式一：创建表，下面的 SQL 语句强制 “Id_P” 列和 “LastName” 列不接受 NULL 值：<br>CREATE TABLE Persons<br>(<br>Id_P int NOT NULL,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    方式二：修改表结构<br>添加非空约束 ALTER TABLE student MODIFY LastName varchar(255) NOT NULL</p><br><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs sql" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 3px; border-width: 1px 1px 1px 6px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(204, 204, 204) rgb(33, 152, 99); color: rgb(169, 183, 198); background: rgb(40, 43, 46) none repeat scroll 0% 0%; overflow-x: auto; padding: 0.5em; display: block !important; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important;">删除非空约束&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">ALTER</span>&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">TABLE</span>&nbsp;student&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">MODIFY</span>&nbsp;LastName&nbsp;<span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important;">varchar</span>(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important;">255</span>)&nbsp;<br></code></pre><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5    唯一约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">UNIQUE 约束唯一标识数据库表中的每条记录。<br>UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。<br>PRIMARY KEY 拥有自动定义的 UNIQUE 约束。<br>请注意，每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5.1    添加唯一约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">与主键添加方式相同，共有3种，<br>    方式1：创建表时，在字段描述处，声明唯一：<br>CREATE TABLE Persons<br>(<br>Id_P int UNIQUE,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)<br>    方式2：创建表时，在约束区域，声明唯一：<br>CREATE TABLE Persons<br>(<br>Id_P int,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br>CONSTRAINT 名称UNIQUE (Id_P)<br>)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    方式3：创建表后，修改表结构，声明字段唯一：<br>ALTER TABLE Persons ADD [CONSTRAINT 名称] UNIQUE (Id_P)</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.5.2    删除唯一约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">    如需撤销 UNIQUE 约束，请使用下面的 SQL：<br>ALTER TABLE Persons DROP INDEX  约束名称<br>    如果添加唯一约束时，没有设置约束名称，默认是当前字段的字段名。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">唯一约束与主键约束的区别：<br>主键：唯一、不能为空、一个表只能有一个主键，非业务数据<br>唯一：唯一、可以有空值，但只能有一个空值。一个表可以有多个唯一约束。</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">3.6    默认约束</p><br><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">在添加数据中，如果该字段不指定值，采用默认值处理<br>    方式一： 创建表，字段处声明<br>CREATE TABLE Persons<br>(<br>Id_P int,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255) DEFAULT ‘北京’,<br>City varchar(255)<br>)<br>    方式二： 修改表结构<br>   ALTER TABLE Persons MODIFY Address VARCHAR(255) DEFAULT ‘北京’ <br>删除默认约束ALTER TABLE Persons MODIFY Address VARCHAR(255)</p></div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/SQL语句查询/" data-id="cjsj1n8fd000ckootux75tvrw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/多表查询/" data-id="cjt4l7yil000hx8otyoht56t3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2167,7 +2468,7 @@ upass VARCHAR(30)
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -2178,6 +2479,10 @@ upass VARCHAR(30)
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/12/Nginx快速上手/">Nginx快速上手</a>
+          </li>
         
           <li>
             <a href="/2019/02/24/JDBC/">JDBC</a>
@@ -2193,10 +2498,6 @@ upass VARCHAR(30)
         
           <li>
             <a href="/2019/01/30/认识docker/">认识docker</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/26/Java面试/">Java面试</a>
           </li>
         
       </ul>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Nginx快速上手 | Quantity Accumulation and Quality Leap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Nginx快速上手 根据实际的应用需要，学习要用到的Nginx的知识，以快速上手、理解并掌握 Nginx 一：Nginx简介 包括：Nginx是什么、能干什么、特点 二：Nginx安装和基本使用 包括：源码安装、安装配置选项、基本使用 三：Nginx基本配置 包括：结合示例的配置文件，熟悉Nginx的基本配置 四：学习核心模块、日志模块和事件模块的常用指令 五：学习Http模块的常用配置和指令 N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx快速上手">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/Nginx快速上手/index.html">
+<meta property="og:site_name" content="Quantity Accumulation and Quality Leap">
+<meta property="og:description" content="Nginx快速上手 根据实际的应用需要，学习要用到的Nginx的知识，以快速上手、理解并掌握 Nginx 一：Nginx简介 包括：Nginx是什么、能干什么、特点 二：Nginx安装和基本使用 包括：源码安装、安装配置选项、基本使用 三：Nginx基本配置 包括：结合示例的配置文件，熟悉Nginx的基本配置 四：学习核心模块、日志模块和事件模块的常用指令 五：学习Http模块的常用配置和指令 N">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-11T16:54:50.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx快速上手">
+<meta name="twitter:description" content="Nginx快速上手 根据实际的应用需要，学习要用到的Nginx的知识，以快速上手、理解并掌握 Nginx 一：Nginx简介 包括：Nginx是什么、能干什么、特点 二：Nginx安装和基本使用 包括：源码安装、安装配置选项、基本使用 三：Nginx基本配置 包括：结合示例的配置文件，熟悉Nginx的基本配置 四：学习核心模块、日志模块和事件模块的常用指令 五：学习Http模块的常用配置和指令 N">
+  
+    <link rel="alternate" href="/atom.xml" title="Quantity Accumulation and Quality Leap" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Quantity Accumulation and Quality Leap</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Nginx快速上手" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/Nginx快速上手/" class="article-date">
+  <time datetime="2019-03-11T16:52:44.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nginx快速上手
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Nginx快速上手</p>
+<p>根据实际的应用需要，学习要用到的Nginx的知识，以快速上手、理解并掌握</p>
+<p>Nginx</p>
+<p>一：Nginx简介</p>
+<p>包括：Nginx是什么、能干什么、特点</p>
+<p>二：Nginx安装和基本使用</p>
+<p>包括：源码安装、安装配置选项、基本使用</p>
+<p>三：Nginx基本配置</p>
+<p>包括：结合示例的配置文件，熟悉Nginx的基本配置</p>
+<p>四：学习核心模块、日志模块和事件模块的常用指令</p>
+<p>五：学习Http模块的常用配置和指令</p>
+<p>Nginx简介</p>
+<p>Nginx是什么</p>
+<p>Nginx是一款轻量级的Web服务器，也是一款轻量级的反向代理服务器。</p>
+<p>Nginx能干什么</p>
+<p>Nginx能干的事情很多，这里简要罗列一些：</p>
+<p>1：直接支持Rails和PHP的程序</p>
+<p>2：作为HTTP反向代理服务器</p>
+<p>3：作为负载均衡服务器</p>
+<p>4：作为邮件代理服务器</p>
+<p>5：帮助实现前端动静分离</p>
+<p>……</p>
+<p>Nginx特点</p>
+<p>高稳定、高性能、资源占用少、功能丰富、模块化结构、支持热部署</p>
+<p>Nginx安装</p>
+<p>源码安装</p>
+<p>演示环境：CentOS6.5</p>
+<p>1：需要gcc，系统自带了，没有的话，需要先安装</p>
+<p>2：需要pcre，安装的命令示例如下： yum install pcre*</p>
+<p>3：需要zlib，安装的命令示例如下：yum install zlib zlib-devel</p>
+<p>4：如果需要支持ssl的话，安装OpenSSL，安装的命令示例如下：</p>
+<p>yum install openssl openssl-devel</p>
+<p>5：上<a href="http://nginx.org/去下载源码包，然后进行解压安装，示例如下：" target="_blank" rel="noopener">http://nginx.org/去下载源码包，然后进行解压安装，示例如下：</a></p>
+<p>（1）先解压源码包，然后进入到这个包里面</p>
+<p>（2）安装命令示例如下：</p>
+<p>第一步：./configure –prefix=/usr/common/nginx –withhttp_</p>
+<p>stub_status_module –with-http_ssl_module</p>
+<p>如果提示确少啥，就加上相应的选项，比如缺少pcre的话，就加上</p>
+<p>–with-pcre=/usr/common/temp/pcre-8.34 （当然我们这里是不缺东西的）</p>
+<p>第二步：配置后就依次make ， make install</p>
+<p>常见的Nginx安装配置选项-1</p>
+<p>编译参数可能会根据版本的不同进行变化，./configure –help查看编译参数列表，常见的选项如下：</p>
+<p> –prefix=<path> - 安装路径，如果没有指定，默认为/usr/local/nginx。</path></p>
+<p> –sbin-path=<path> - nginx可执行命令的文件，如果没有指定，默认为<prefix>/sbin/nginx。</prefix></path></p>
+<p> –conf-path=<path> - 在没有使用-c参数指定的情况下nginx.conf的默认位置，如果没有指定，默认</path></p>
+<p>为<prefix>/conf/nginx.conf。</prefix></p>
+<p> –pid-path=<path> - nginx.pid的路径，如果没有在nginx.conf中通过“pid”指令指定，默认为</path></p>
+<p><prefix>/logs/nginx.pid。</prefix></p>
+<p> –lock-path=<path> - nginx.lock文件路径，如果没有指定，默认为<prefix>/logs/nginx.lock。</prefix></path></p>
+<p> –error-log-path=<path> - 当没有在nginx.conf中使用“error_log”指令指定时的错误日志位置，</path></p>
+<p>如果没有指定，默认为<prefix>/logs/error.log。</prefix></p>
+<p> –http-log-path=<path> - 当没有在nginx.conf中使用“access_log”指令指定时的访问日志位置，</path></p>
+<p>如果没有指定，默认为<prefix>/logs/access.log。</prefix></p>
+<p> –user=<user> - 当没有在nginx.conf中使用“user”指令指定时nginx运行的用户，如果没有指定，</user></p>
+<p>默认为“nobody”。</p>
+<p> –group=<group> - 当没有在nginx.conf中使用“user”指令指定时nginx运行的组，如果没有指定，</group></p>
+<p>默认为“nobody”。</p>
+<p> –builddir=DIR - 设置构建目录。</p>
+<p> –with-rtsig_module - 启用rtsig模块。</p>
+<p>常见的Nginx安装配置选项-2</p>
+<p>–with-select_module –without-select_module - 如果在configure的时候没有发现kqueue, epoll,</p>
+<p>rtsig或/dev/poll其中之一，select模块始终为启用状态。</p>
+<p> –with-poll_module –without-poll_module - 如果在configure的时候没有发现kqueue, epoll,</p>
+<p>rtsig或/dev/poll其中之一，poll模块始终为启用状态。</p>
+<p> –with-http_ssl_module - 启用ngx_http_ssl_module，启用SSL支持并且能够处理HTTPS请求。需要</p>
+<p>OpenSSL，在Debian系统中，对应的包为libssl-dev。</p>
+<p> –with-http_realip_module - 启用ngx_http_realip_module</p>
+<p> –with-http_addition_module - 启用ngx_http_addition_module</p>
+<p> –with-http_sub_module - 启用ngx_http_sub_module</p>
+<p> –with-http_dav_module - 启用ngx_http_dav_module</p>
+<p> –with-http_flv_module - 启用ngx_http_flv_module</p>
+<p> –with-http_stub_status_module - 启用”server status”（服务状态）页</p>
+<p> –without-http_charset_module - 禁用ngx_http_charset_module</p>
+<p> –without-http_gzip_module - 禁用ngx_http_gzip_module，如果启用，需要zlib包。</p>
+<p> –without-http_ssi_module - 禁用ngx_http_ssi_module</p>
+<p> –without-http_userid_module - 禁用ngx_http_userid_module</p>
+<p> –without-http_access_module - 禁用ngx_http_access_module</p>
+<p> –without-http_auth_basic_module - 禁用ngx_http_auth_basic_module</p>
+<p>常见的Nginx安装配置选项-3</p>
+<p>–without-http_autoindex_module - 禁用ngx_http_autoindex_module</p>
+<p> –without-http_geo_module - 禁用ngx_http_geo_module</p>
+<p> –without-http_map_module - 禁用ngx_http_map_module</p>
+<p> –without-http_referer_module - 禁用ngx_http_referer_module</p>
+<p> –without-http_rewrite_module - 禁用ngx_http_rewrite_module。如果启用，需要PCRE包。</p>
+<p> –without-http_proxy_module - 禁用ngx_http_proxy_module</p>
+<p> –without-http_fastcgi_module - 禁用ngx_http_fastcgi_module</p>
+<p> –without-http_memcached_module - 禁用ngx_http_memcached_module</p>
+<p> –without-http_limit_zone_module - 禁用ngx_http_limit_zone_module</p>
+<p> –without-http_empty_gif_module - 禁用ngx_http_empty_gif_module</p>
+<p> –without-http_browser_module - 禁用ngx_http_browser_module</p>
+<p> –without-http_upstream_ip_hash_module - 禁用ngx_http_upstream_ip_hash_module</p>
+<p> –with-http_perl_module - 启用ngx_http_perl_module</p>
+<p> –with-perl_modules_path=PATH - 为perl模块设置路径</p>
+<p> –with-perl=PATH - 为perl库设置路径</p>
+<p> –http-client-body-temp-path=PATH - 为http连接的请求实体临时文件设置路径，如果没有指定，默认为<prefix>/client_body_temp</prefix></p>
+<p>常见的Nginx安装配置选项-4</p>
+<p>–http-proxy-temp-path=PATH - 为http代理临时文件设置路径，如果没有指定，默认为<prefix>/proxy_temp</prefix></p>
+<p> –http-fastcgi-temp-path=PATH - 为http fastcgi临时文件设置路径，如果没有指定，默认为<prefix>/fastcgi_temp</prefix></p>
+<p> –without-http - 禁用HTTP服务</p>
+<p> –with-mail - 启用IMAP4/POP3/SMTP代理模块</p>
+<p> –with-mail_ssl_module - 启用ngx_mail_ssl_module</p>
+<p> –with-cc=PATH - 设置C编译器路径</p>
+<p> –with-cpp=PATH - 设置C预处理器路径</p>
+<p> –with-cc-opt=OPTIONS - 变量CFLAGS中附加的参数，用于FreeBSD中的PCRE库，同样需要指定–withcc-</p>
+<p>opt=”-I /usr/local/include”，如果我们使用select()函数则需要同时增加文件描述符数量，可</p>
+<p>以通过–with-cc-opt=”-D FD_SETSIZE=2048”指定。</p>
+<p> –with-ld-opt=OPTIONS - 通过连接器的附加参数，用于FreeBSD中的PCRE库，同样需要指定–withld-</p>
+<p>opt=”-L /usr/local/lib”。</p>
+<p> –with-cpu-opt=CPU - 指定编译的CPU，可用的值为: pentium, pentiumpro, pentium3, pentium4,</p>
+<p>athlon, opteron, amd64, sparc32, sparc64, ppc64</p>
+<p> –without-pcre - 禁用PCRE库文件，同时将禁用HTTP rewrite 模块，如果要在”location”指令中使</p>
+<p>用正则表达式，同样需要PCRE库。</p>
+<p>常见的Nginx安装配置选项-5</p>
+<p> –with-pcre=DIR - 设置PCRE库源文件路径。</p>
+<p> –with-pcre-opt=OPTIONS - 在编译时为PCRE设置附加参数。</p>
+<p> –with-md5=DIR - 设置md5库源文件路径。</p>
+<p> –with-md5-opt=OPTIONS - 在编译时为md5设置附加参数。</p>
+<p> –with-md5-asm - 使用md5汇编源。</p>
+<p> –with-sha1=DIR - 设置sha1库源文件路径。</p>
+<p> –with-sha1-opt=OPTIONS - 在编译时为sha1设置附加参数。</p>
+<p> –with-sha1-asm - 使用sha1汇编源。</p>
+<p> –with-zlib=DIR - 设置zlib库源文件路径。</p>
+<p> –with-zlib-opt=OPTIONS - 在编译时为zlib设置附加参数。</p>
+<p> –with-zlib-asm=CPU - 为指定的CPU使用zlib汇编源进行优化，可用值为: pentium, pentiumpro。</p>
+<p> –with-openssl=DIR - 设置openssl库源文件路径。</p>
+<p> –with-openssl-opt=OPTIONS - 在编译时为openssl设置附加参数。</p>
+<p> –with-debug - 启用debug记录。</p>
+<p> –add-module=PATH - 增加一个在PATH中的第三方模块。</p>
+<p>Nginx的基本运行</p>
+<p> 测试配置文件：</p>
+<p>安装路径下的/nginx/sbin/nginx -t</p>
+<p> 启动：</p>
+<p>安装路径下的/nginx/sbin/nginx</p>
+<p> 停止</p>
+<p>安装路径下的/nginx/sbin/nginx -s stop</p>
+<p>或者是： nginx -s quit</p>
+<p> 重启</p>
+<p>安装路径下的/nginx/sbin/nginx -s reload</p>
+<p> 查看进程</p>
+<p>ps -ef |grep nginx</p>
+<p>安装过后，如果从外面访问不了，多半是被防火墙挡住了，可以关闭掉防火墙：</p>
+<p>/sbin/service iptables stop</p>
+<p>Nginx的基本配置-1</p>
+<p> 默认启动Nginx时，使用的配置文件是： 安装路径/conf/nginx.conf 文件</p>
+<p>可以在启动nginx的时候，通过-c来指定要读取的配置文件</p>
+<p> 常见的配置文件有如下几个：</p>
+<p>nginx.conf：应用程序的基本配置文件</p>
+<p>mime.types：MIME类型关联的扩展文件</p>
+<p>fastcgi.conf：与fastcgi相关的配置</p>
+<p>proxy.conf：与proxy相关的配置</p>
+<p>sites.conf：配置Nginx提供的网站，包括虚拟主机</p>
+<p> Nginx的进程结构</p>
+<p>启动Nginx的时候，会启动一个Master进程，这个进程不处理任何客户端的</p>
+<p>请求，主要用来产生worker进程，一个worker进程用来处理一个request。</p>
+<p> Nginx模块分为：核心模块、事件模块、标准Http模块、可选Http模块、邮件模</p>
+<p>块、第三方模块和补丁等</p>
+<p>Nginx的基本配置-2</p>
+<p> Nginx基本模块：所谓基本模块，指的是Nginx默认的功能模块，它们提供的指</p>
+<p>令，允许你使用定义Nginx基本功能的变量，在编译的时候不能被禁用，包括：</p>
+<p>核心模块：基本功能和指令，如进程管理和安全</p>
+<p>事件模块：在Nginx内配置网络使用的能力</p>
+<p>配置模块：提供包含机制</p>
+<p> 常见的核心模块指令，大部分都是放置在配置文件的顶部</p>
+<p>具体的指令，请参看nginx的官方文档，非常详细，参见：</p>
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/ngx_core_module.html</a></p>
+<p>还有下面这个网站，也是非常不错的：</p>
+<p><a href="http://www.howtocn.org/nginx:directiveindex" target="_blank" rel="noopener">http://www.howtocn.org/nginx:directiveindex</a></p>
+<p> 常见的events模块指令，大部分都是放置在配置文件的顶部</p>
+<p>具体的指令，在上面那个文档里面，命令的context为events的就是events</p>
+<p>模块指令，只能在events里面使用</p>
+<p>Nginx常用的核心模块指令</p>
+<p> 核心模块指令，重点看看：error_log、include、pid、user、worker_cpu_affinity、</p>
+<p>worker_processes</p>
+<p> error_log</p>
+<p>日志有6个级别：debug|info|notice|warn|error|crit</p>
+<p>Nginx支持将不同的虚拟主机的日志记录在不同的地方，如下示例：</p>
+<p>http{</p>
+<p>error_log logs/http_error.log error;</p>
+<p>server{</p>
+<p>server_name one;</p>
+<p>access_log logs/one_access.log;</p>
+<p>error_log logs/one_error.log error;</p>
+<p>}</p>
+<p>server{</p>
+<p>server_name two;</p>
+<p>access_log logs/two_access.log;</p>
+<p>error_log logs/two_error.log error;</p>
+<p>}</p>
+<p>}</p>
+<p>注意：error_log off不是禁用日志，而是创建一个名为off的日志，要禁用日志，可以这么写：error_log</p>
+<p>/dev/null crit;</p>
+<p>Nginx常用的日志模块、事件模块指令</p>
+<p> 日志模块指令，几个都看看</p>
+<p> 事件模块指令，重点看看：use和worker_connections</p>
+<p>Nginx的HTTP基本配置</p>
+<p> Nginx的HTTP配置主要包括三个区块，结构如下：</p>
+<p>http { //这个是协议级别</p>
+<p>include mime.types;</p>
+<p>default_type application/octet-stream;</p>
+<p>keepalive_timeout 65;</p>
+<p>gzip on;</p>
+<p>server { //这个是服务器级别</p>
+<p>listen 80;</p>
+<p>server_name localhost;</p>
+<p>location / { //这个是请求级别</p>
+<p>root html;</p>
+<p>index index.html index.htm;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p> Nginx的HTTP核心模块，包括大量的指令和变量，大都很重要，具体参见：</p>
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html" target="_blank" rel="noopener">http://nginx.org/en/docs/http/ngx_http_core_module.html</a></p>
+<p>Location区段-1</p>
+<p> Location区段，通过指定模式来与客户端请求的URI相匹配，基本语法如下：</p>
+<p>location [=|~|~*|^~|@] pattern{……}</p>
+<p>1：没有修饰符表示：必须以指定模式开始，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location /abc {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-2</p>
+<p>2：= 表示：必须与指定的模式精确匹配，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location = /abc {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-3</p>
+<p>3：~ 表示：指定的正则表达式要区分大小写，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location ~ ^/abc$ {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/ABC" target="_blank" rel="noopener">http://sishuok.com/ABC</a></p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-4</p>
+<p>4：~* 表示：指定的正则表达式不区分大小写，如：</p>
+<p>server {</p>
+<p>server_name sishuok.com;</p>
+<p>location ~* ^/abc$ {</p>
+<p>……</p>
+<p>}</p>
+<p>}</p>
+<p>那么，如下是对的：</p>
+<p><a href="http://sishuok.com/abc" target="_blank" rel="noopener">http://sishuok.com/abc</a></p>
+<p><a href="http://sishuok.com/ABC" target="_blank" rel="noopener">http://sishuok.com/ABC</a></p>
+<p><a href="http://sishuok.com/abc?p1=11&amp;p2=22" target="_blank" rel="noopener">http://sishuok.com/abc?p1=11&amp;p2=22</a></p>
+<p>如下是错的：</p>
+<p><a href="http://sishuok.com/abc/" target="_blank" rel="noopener">http://sishuok.com/abc/</a></p>
+<p><a href="http://sishuok.com/abcde" target="_blank" rel="noopener">http://sishuok.com/abcde</a></p>
+<p>Location区段-5</p>
+<p>5：^~ 类似于无修饰符的行为，也是以指定模式开始，不同的是，如果模式匹配，</p>
+<p>那么就停止搜索其他模式了。</p>
+<p>6：@ ：定义命名location区段，这些区段客户段不能访问，只可以由内部产生的请</p>
+<p>求来访问，如try_files或error_page等</p>
+<p> 查找顺序和优先级</p>
+<p>1：带有“=“的精确匹配优先</p>
+<p>2：没有修饰符的精确匹配</p>
+<p>3：正则表达式按照他们在配置文件中定义的顺序</p>
+<p>4：带有“^~”修饰符的，开头匹配</p>
+<p>5：带有“~” 或“~*” 修饰符的，如果正则表达式与URI匹配</p>
+<p>6：没有修饰符的，如果指定字符串与URI开头匹配</p>
+<p>Location区段匹配示例</p>
+<p>location = / {</p>
+<h1 id="只匹配-的查询"><a href="#只匹配-的查询" class="headerlink" title="只匹配/ 的查询."></a>只匹配/ 的查询.</h1><p>[ configuration A ]</p>
+<p>}</p>
+<p>location / {</p>
+<h1 id="匹配任何以-开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。"><a href="#匹配任何以-开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。" class="headerlink" title="匹配任何以/ 开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。"></a>匹配任何以/ 开始的查询，但是正则表达式与一些较长的字符串将被首先匹配。</h1><p>[ configuration B ]</p>
+<p>}</p>
+<p>location ^~ /images/ {</p>
+<h1 id="匹配任何以-images-开始的查询并且停止搜索，不检查正则表达式。"><a href="#匹配任何以-images-开始的查询并且停止搜索，不检查正则表达式。" class="headerlink" title="匹配任何以/images/ 开始的查询并且停止搜索，不检查正则表达式。"></a>匹配任何以/images/ 开始的查询并且停止搜索，不检查正则表达式。</h1><p>[ configuration C ]</p>
+<p>}</p>
+<p>location ~* .(gif|jpg|jpeg)$ {</p>
+<h1 id="匹配任何以gif-jpg-or-jpeg结尾的文件，但是所有-images-目录的请求将在Configuration-C中处"><a href="#匹配任何以gif-jpg-or-jpeg结尾的文件，但是所有-images-目录的请求将在Configuration-C中处" class="headerlink" title="匹配任何以gif, jpg, or jpeg结尾的文件，但是所有/images/ 目录的请求将在Configuration C中处"></a>匹配任何以gif, jpg, or jpeg结尾的文件，但是所有/images/ 目录的请求将在Configuration C中处</h1><p>理。</p>
+<p>[ configuration D ]</p>
+<p>}</p>
+<p>各请求的处理如下例：</p>
+<p>■/ → configuration A</p>
+<p>■/documents/document.html → configuration B</p>
+<p>■/images/1.gif → configuration C</p>
+<p>■/documents/1.jpg → configuration D</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/12/Nginx快速上手/" data-id="cjt4l7ygx0005x8ote6vsabso" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/24/JDBC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JDBC</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/12/Nginx快速上手/">Nginx快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/24/JDBC/">JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/MySQL基础/">MySQL基础</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/03/JavaNIO/">JavaNIO</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/30/认识docker/">认识docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Zhang Bin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
